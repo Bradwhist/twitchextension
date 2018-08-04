@@ -1,0 +1,82 @@
+$top-bar-dimension: 40px
+
+.dialog__backdrop
+  position: fixed
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  background-color: #19171C
+  opacity: 0.75
+  padding: 50
+  height: 100vh
+  z-index: 1000
+
+.dialog
+  background-color: white
+  border-radius: 5
+  width: 66%
+  margin: 0 auto
+  border: 1px solid #DAD8DE
+  position: absolute
+  top: 20%
+  left: 20%
+  z-index: 1000
+
+.container
+  display: flex
+
+.container__block
+  display: inline-block
+
+.container__left-block
+  @extend .container__block
+  float: left
+  margin-left: 20px
+
+.container__right-block
+  @extend .container__block
+  float: right
+
+.top-bar
+  @extend .container
+  height: $top-bar-dimension
+  justify-content: space-between
+
+.top-bar-element
+  width: auto
+  text-align: center
+  vertical-align: middle
+  line-height: $top-bar-dimension
+  font-weight: lighter
+
+.top-bar-element-left
+  @extend .container__left-block
+  @extend .top-bar-element
+
+.top-bar-element-right
+  @extend .container__right-block
+  @extend .top-bar-element
+
+.dialog__divider-width
+  width: 96%
+
+@mixin bottom-bar-box($color, $bg-color)
+  color: $color
+  background-color: $bg-color
+  border: 1px solid #7D55C7
+  float: left
+  text-align: center
+  width: 80px
+  height: 30px
+  vertical-align: middle
+  line-height: 30px
+  cursor: pointer
+  font-size: 16px
+  margin-left: 20px
+  margin-top: 10px
+  margin-bottom: 30px
+
+.title
+  font-size: 13px
+  font-weight: lighter

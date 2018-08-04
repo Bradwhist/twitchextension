@@ -1,0 +1,41 @@
+{
+    "onContext": [{
+        "name": "onContext1",
+        "mode": "viewer",
+        "bitrate": 5000,
+        "bufferSize": 100,
+        "displayResolution": "640x480",
+        "game": "League Of Legends",
+        "hlsLatencyBroadcaster": 5,
+        "isFullScreen": false,
+        "isPaused": false,
+        "isTheatreMode": false,
+        "language": "en",
+        "playbackMode": "video",
+        "theme": "dark",
+        "videoResolution": "640x480"
+    },
+    {
+        "name": "onContext2",
+        "mode": "viewer",
+        "bitrate": 900,
+        "bufferSize": 20,
+        "displayResolution": "1920x1080",
+        "game": "Super Smash Bros Melee",
+        "hlsLatencyBroadcaster": 12,
+        "isFullScreen": false,
+        "isPaused": true,
+        "isTheatreMode": false,
+        "language": "en",
+        "playbackMode": "video",
+        "theme": "dark",
+        "videoResolution": "1920x1080"
+    }],
+    "onAuthorized": [{
+        "name": "onAuthorized1",
+        "channelId": "testChannelId",
+        "clientId": "testClientId",
+        "token": "jwtToken",
+        "userId": "testuser"
+    }]
+}

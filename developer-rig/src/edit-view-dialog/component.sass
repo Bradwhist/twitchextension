@@ -1,0 +1,61 @@
+@import "../dialog-component/component.sass"
+
+.edit-view__background
+  @extend .dialog__backdrop
+
+.edit-view__dialog-component
+  @extend .dialog
+  height: 275px
+  width: 275px
+  left: 40%
+
+.edit-view__dialog-mobile
+  @extend .dialog
+  height: 275px
+  width: 415px
+  left: 35%
+
+.edit-view__dialog-overlay
+  @extend .dialog
+  height: 275px
+  width: 275px
+  left: 40%
+
+.edit-view__content
+  @extend .container__left-block
+  overflow-y: auto
+  height: 50%
+  width: 95%
+  display: flex
+  flex-direction: column
+
+.edit-subcontainer__input
+  margin-top: .5em
+  margin-bottom: .5em
+
+.dialog__top-bar-container
+  @extend .top-bar
+
+.top-bar-container__title
+  @extend .top-bar-element-left
+  margin-top: 5px
+
+.top-bar-container__escape
+  @extend .top-bar-element-right
+  width: $top-bar-dimension
+  cursor: pointer
+  width: 4em
+  margin-top: 5px
+
+.dialog__divider
+  @extend .dialog__divider-width
+
+.dialog__bottom-bar
+  @extend .container__left-block
+
+.bottom-bar__save
+  @include bottom-bar-box(white, #7D55C7)
+
+.bottom-bar__cancel
+  @include bottom-bar-box(#7D55C7, white)
+  margin-left: 10px

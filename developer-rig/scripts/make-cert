@@ -1,0 +1,150 @@
+#!/bin/bash
+
+# https://stackoverflow.com/questions/10175812/how-to-create-a-self-signed-certificate-with-openssl
+# https://stackoverflow.com/questions/21297139/how-do-you-sign-a-certificate-signing-request-with-your-certification-authority
+
+# Check the platform.
+if [ "$(uname)" != "Darwin" ]; then
+	echo "This script is for Mac only."
+	exit 1
+fi
+
+# Create and switch to the temporary directory.
+D="$(python -c 'import os,sys;print(os.path.realpath(sys.argv[1]))' "$(dirname "$0")")"
+T=$(mktemp -d)
+cd $T
+
+# Clean up upon exit.
+on_exit() {
+	cd "$D"
+	rm -rf $T
+}
+trap on_exit EXIT
+
+# Create utility functions.
+fail() {
+	echo -e "\033[0;31m$1\033[0m"
+	exit 1
+}
+check() {
+	[ $? -eq 0 ] || fail "Cannot $1."
+}
+
+# Determine if the certificates need creation or installation.
+NEEDS_INSTALLATION=true
+SSL="$D/../ssl"
+if [ -s "$SSL/cacert.crt" -a -s "$SSL/cacert.key" -a -s "$SSL/selfsigned.crt" -a -s "$SSL/selfsigned.key" -a -s "$SSL/server.crt" -a -s "$SSL/server.key" ]; then
+	# The certificates have been previously created.  Determine if the certificates need installation.
+	security find-certificate -a | grep -Fq "Twitch Developer Rig CA" && NEEDS_INSTALLATION=false
+else
+	# Determine the availability of OpenSSL.
+	openssl version > /dev/null 2>&1
+	[ $? -eq 0 ] || fail "OpenSSL is not available."
+
+	# Prepare input files.
+	cp "$D"/*.cnf .
+	touch index.txt
+	openssl rand -hex 4 > serial.txt
+	cat serial.txt
+	CA=openssl-ca.cnf
+
+	# Create the certificate authority certificate.
+	echo -e '\n\n\n\n\n\n\n' | openssl req -x509 -days 99999 -config $CA -newkey rsa:4096 -sha256 -nodes -out cacert.pem -outform PEM
+	check "create the certificate authority certificate"
+
+	# Create the certificate requests for the Developer Rig and localhost.
+	echo "DNS.1 = localhost.rig.twitch.tv" > rig.dns
+	echo "DNS.1 = localhost" > localhost.dns
+	for i in rig localhost; do
+		rm openssl-server.cnf
+		cat "$D/openssl-server.cnf" $i.dns > openssl-server.cnf
+		echo -e '\n\n\n\n\n\n\n' | openssl req -config openssl-server.cnf -newkey rsa:2048 -sha256 -nodes -out ${i}cert.csr -outform PEM
+		check "create the $i certificate request"
+		mv serverkey.pem ${i}key.pem
+	done
+
+	# Create the server certificates for the Developer Rig and localhost.
+	rm $CA
+	cat "$D/$CA" "$D/openssl-ca.add" > $CA
+	echo "unique_subject = no" > index.txt.attr
+	for i in rig localhost; do
+		yes | openssl ca -config $CA -policy signing_policy -extensions signing_req -out ${i}cert.pem -infiles ${i}cert.csr
+		check "create the $i server certificate"
+	done
+
+	# Move all desired files to the Developer Rig ssl directory.
+	[ -s cacert.pem -a -s cakey.pem -a -s rigcert.pem -a -s rigkey.pem -a -s localhostcert.pem -a -s localhostkey.pem ] || fail "OpenSSL failed"
+	mv cacert.pem "$SSL/cacert.crt"
+	mv cakey.pem "$SSL/cacert.key"
+	mv rigcert.pem "$SSL/selfsigned.crt"
+	mv rigkey.pem "$SSL/selfsigned.key"
+	mv localhostcert.pem "$SSL/server.crt"
+	mv localhostkey.pem "$SSL/server.key"
+	check "place the Developer Rig certificate files"
+fi
+
+# Copy localhost certificates to the extension conf directory.
+CONF="$D/../../my-extension/conf"
+mkdir -p "$CONF"
+cp "$SSL"/server.* "$CONF"
+check "place the extension server certificate files"
+
+# Add all certificates to the local machine's root certificate store.
+if $NEEDS_INSTALLATION; then
+	touch /etc/hosts 2> /dev/null || echo "Please enter your password to install the Twitch Developer Rig certificate."
+	sudo security add-trusted-cert -d -p ssl -u -1 -k /Library/Keychains/System.keychain "$SSL/cacert.crt"
+	check "add the CA certificate to the local machine's root certificate store"
+	for name in server selfsigned; do
+		sudo security add-trusted-cert -d -p ssl -r trustAsRoot -k /Library/Keychains/System.keychain "$SSL/$name.crt"
+		check "add the $name certificate to the local machine's root certificate store"
+	done
+
+	# If Firefox is installed, allow it to use the certificates in the local
+	# machine's root certificate store.
+	FF=/Applications/Firefox.app/Contents/Resources
+	if [ -d $FF ]; then
+		FF_PREF=$FF/defaults/pref
+		FF_RIG=$FF_PREF/twitch-developer-rig.js
+		cat > $FF_RIG <<- EOF
+			// Twitch preferences
+			pref("security.enterprise_roots.enabled", true);'
+		EOF
+		check "create $FF_RIG"
+
+		# Due to Mozilla bug 1300420, the preference specified above isn't
+		# sufficient to trust the certificates.  The following will add the root
+		# CA certificate to Firefox's trust store.
+		# https://github.com/soberhofer/Firefox-RootCA
+		FF_CFG=$FF/mozilla.cfg
+		sed '/Twitch Developer Rig CA certificate addition/,$d' $FF_CFG > cfg
+		cat >> cfg <<- EOF
+			// Twitch Developer Rig CA certificate addition
+			var Cc = Components.classes;
+			var Ci = Components.interfaces;
+			var certdb = Cc["@mozilla.org/security/x509certdb;1"].getService(Ci.nsIX509CertDB);
+			var twitchCert = "" +
+			$(sed -e '/-----B*E[GI]*ND* CERTIFICATE-----/d' -e 's/^/"/' -e 's/$/" +/' "$D/../ssl/cacert.crt")
+			"";
+			certdb.addCertFromBase64(twitchCert, "C,C,C", "");
+		EOF
+		mv cfg $FF_CFG
+		check "update $FF_CFG"
+
+		# Ensure Firefox uses the above file.
+		if ! grep -Fq general.config $FF_PREF/*; then
+			cat >> $FF_RIG <<- EOF
+				pref("general.config.obscure_value",0);
+				pref("general.config.filename","mozilla.cfg");
+			EOF
+		fi
+	fi
+
+	# The user must restart their browser for these changes to take effect.
+	if [ $# -eq 0 ]; then
+		echo -e '\033[1;35mNOTE:\033[0;35m  you must restart your browser before running the Developer Rig.\033[0m'
+	else
+		echo -e '\033[1;35mNOTE:\033[0;35m  you must restart your browser before continuing.'
+		echo -e 'Press "return" to acknowledge.\033[0m'
+		read L
+	fi
+fi

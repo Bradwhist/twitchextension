@@ -1,0 +1,43 @@
+@import "../dialog-component/component.sass"
+.rig-configurations-view
+
+
+.rig-configurations-view__background
+  @extend .dialog__backdrop
+
+.rig-configurations-view__dialog
+  @extend .dialog
+  height: 400px
+
+.rig-configurations-view__content
+  @extend .container__left-block
+  white-space: pre
+  overflow-y: auto
+  height: 250px
+  width: 95%
+
+.dialog__top-bar-container
+  @extend .top-bar
+
+.top-bar-container__title
+  @extend .top-bar-element-left
+  margin-top: 5px
+
+.top-bar-container__escape
+  @extend .top-bar-element-right
+  width: $top-bar-dimension
+  cursor: pointer
+  width: 4em
+  margin-top: 5px
+
+.dialog__divider
+  @extend .dialog__divider-width
+
+.dialog__bottom-bar
+  @extend .container__left-block
+
+.bottom-bar__refresh
+  @include bottom-bar-box(white, #7D55C7)
+
+.bottom-bar__cancel
+  @include bottom-bar-box(#7D55C7, white)

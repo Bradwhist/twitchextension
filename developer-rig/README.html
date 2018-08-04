@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Twitch Extensions Developer Rig</title>
+</head>
+<body>
+
+    <h1 id="twitch-extensions-developer-rig">Twitch Extensions Developer Rig</h1>
+<p><a href="https://travis-ci.org/twitchdev/developer-rig"><img src="https://travis-ci.org/twitchdev/developer-rig.svg?branch=master" alt="Build Status" /></a> <a href="https://coveralls.io/github/twitchdev/developer-rig"><img src="https://coveralls.io/repos/github/twitchdev/developer-rig/badge.svg" alt="Coverage Status" /></a></p>
+<h2 id="quickstart-to-hello-world-with-the-developer-rig-in-local-mode">Quickstart to Hello World with the Developer Rig in Local Mode</h2>
+<p>The Developer Rig can be used in two modes to test your Extension, Online Mode and Local Mode.  Online Mode will let you test with production APIs and hosted assets on Twitch, but will first require completion of Extensions Developer onboarding <a href="https://dev.twitch.tv/dashboard">here</a>.  The Rig also supports Local Mode to let you get started building quickly pre-onboarding, using mock versions of the APIs.</p>
+<p>Take these steps to get Hello World running in Local Mode in the Rig.</p>
+<ol>
+<li>If you already have <a href="https://git-scm.com/download">Git</a> installed, clone the rig.  Otherwise, <a href="https://github.com/twitchdev/developer-rig/archive/master.zip">download and extract the Zip file</a>.</li>
+<li>Open the <code>scripts</code> folder in the <code>developer-rig</code> folder.</li>
+<li>Double-click the <code>run</code> file on Mac, <code>run.cmd</code> file on Windows.  The first time you run the script it will take a while since it will install and configure all of the dependencies.</li>
+</ol>
+<p>When you are done using the Developer Rig, close all opened terminal windows or command prompts.</p>
+<p>There are detailed guides for <a href="docs/MacLocal.md">Mac</a> and <a href="docs/WindowsLocal.md">Windows</a> that describe what the above script does to get you from nothing to Hello World.</p>
+<p>See additional documentation on how to use the Developer Rig in Local Mode here: <a href="#using-local-mode">Using Local Mode</a></p>
+<p>If you're looking to move past Local Mode and run the Rig in Online Mode, go here: <a href="#getting-started-in-online-mode">Getting Started in Online Mode</a></p>
+<h2 id="quick-links">Quick Links</h2>
+<ul>
+<li><a href="#twitch-extensions-101">Twitch Extensions 101</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#getting-started-in-online-mode">Getting Started in Online Mode</a>
+<ul>
+<li><a href="#create-an-extension-on-the-twitch-dev-site">Create an Extension on the Twitch Dev Site</a></li>
+<li><a href="#configuring-the-developer-rig">Configuring the Developer Rig</a></li>
+<li><a href="#starting-the-developer-rig-in-online-mode">Starting the Developer Rig in Online Mode</a></li>
+<li><a href="#using-the-developer-rig">Using the Developer Rig</a></li>
+</ul>
+</li>
+<li><a href="#loading-an-example-extension">Loading an Example Extension</a></li>
+<li><a href="#tldr">TL;DR</a></li>
+<li><a href="#using-local-mode">Using Local Mode</a></li>
+<li><a href="#faqs">FAQs</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+<h2 id="twitch-extensions-101">Twitch Extensions 101</h2>
+<p>Think of Twitch Extensions as Apps for Twitch. Developers can create sandboxed web applications that run on <a href="https://twitch.tv">Twitch</a> that provide new and different ways for viewers and broadcasters to interact.</p>
+<p>To build the simplest Extension, a developer creates a web application (a collection of assets that include HTML, CSS, and Javascript) and then hosts these assets from the Twitch CDN ext.twitch.tv. A more complicated but more common Extension leverages an Extension Back-end Service (EBS). An EBS is a web service written by a developer for managing the state of their Extension. These two blocks of developer written code are often referred to as the <strong>front-end</strong> and the <strong>back-end</strong>.</p>
+<p><em>Developers are currently completely responsible for operating their back-ends.</em></p>
+<p>The <a href="https://dev.twitch.tv">Twitch Developer Site</a> is currently where the lifecycle of an Extension is managed. This includes creation, <em>front-end</em> asset upload, submitting to review, and promoting to be released. The Dev Site is where key pieces of data are retrieved to configure and run the Developer Rig.</p>
+<p>The Developer Rig hosts Extension front-ends locally. This gives developers complete flexibility to run and test their Extensions without needing to load Twitch. For example, the Developer Rig does not currently stream video, reducing friction for testing a Video Overlay Extension. Additionally, multiple views of a single Extension can be loaded onto a single page, giving developers a single pane of glass for the different relevant views for their Extension.</p>
+<h2 id="motivation">Motivation</h2>
+<p>The Developer Rig is a tool that enables <a href="https://dev.twitch.tv/extensions">Twitch Extensions</a> developers to iterate more quickly and focus on building great Extensions, by providing a single pane of glass for all end user Extensions views and interactions. It is a lightweight web app that runs in a browser and is built using <a href="https://nodejs.org">NodeJS 6+</a> and <a href="https://reactjs.org/">React</a>. The Developer Rig allows Extensions Developers to quickly and easily, locally end-to-end test in development Extensions.</p>
+<h2 id="overview">Overview</h2>
+<p>The Developer Rig renders Extensions in a combination of user contexts, views and different anchor types.</p>
+<p>Supported user contexts include:</p>
+<ul>
+<li>broadcaster</li>
+<li>logged in viewers (linked and unlinked)</li>
+<li>logged out viewers (i.e. anonymous users)</li>
+</ul>
+<p>Supported views include:</p>
+<ul>
+<li>channel page</li>
+<li>live dashboard</li>
+<li>broadcaster configuration</li>
+</ul>
+<p>Supported anchor types include:</p>
+<ul>
+<li>panels</li>
+<li>video overlays</li>
+<li>mobile and video components</li>
+</ul>
+<p>Extension output logs can be redirected to the <a href="#rig-console">Rig Console</a>, a Developer Rig specific local console.</p>
+<h2 id="getting-started-in-online-mode">Getting Started in Online Mode</h2>
+<p>If you're just getting started with Extensions and haven't gone through Extension Developer Onboarding, follow the steps at the top of the documentation for Local Mode.  Otherwise, the following guide will help you create your first Extension on Twitch and run it in the Developer Rig in Online Mode.</p>
+<p>There are detailed guides for <a href="docs/MacOnline.md">Mac</a> and <a href="docs/WindowsOnline.md">Windows</a> to get you from nothing to Hello World.</p>
+<h4 id="create-an-extension-on-the-twitch-dev-site">Create an Extension on the Twitch Dev Site</h4>
+<p>For each Extension to be tested online in the Developer Rig, a corresponding Extension needs to be created on the <a href="https://dev.twitch.tv/dashboard">Twitch Dev Site</a>. More detailed instructions to do this can be found <a href="https://dev.twitch.tv/docs/extensions#creating-your-extension">here</a>. Most fields are not relevant for the Developer Rig. The <em>Type of Extension</em> is loaded into the Developer Rig, and is hence important. Similarly, the <em>Author Email</em> must be correctly set and verified, before an <a href="#developer-rig-configuration">Extension secret</a> can be created.</p>
+<img src="./docs/create-extension.png" width="80%">
+<p>There are several highly pertinent pieces of data that need to be taken from the dev site, and surfaced in the Developer Rig for it to operate. These include:</p>
+<ul>
+<li>The Client ID of the Extension</li>
+<li>The version of the Extension to be loaded in the Developer Rig</li>
+<li>A generated Extension Secret, to be used to sign Extension JWTs</li>
+</ul>
+<p>These are hard requirements that enable the Developer Rig to function correctly in Online Mode!</p>
+<h3 id="configuring-the-developer-rig">Configuring the Developer Rig</h3>
+<p>Where possible, the Developer Rig is self-contained.  Note that you should sign in with your Twitch credentials in Local Mode before using online mode, as it provides necessary information for the Rig Configuration.</p>
+<h4 id="developer-rig-configuration">Developer Rig Configuration</h4>
+<p>If you are new to building Twitch Extensions, <a href="https://dev.twitch.tv/docs/extensions#high-level-steps-for-developing-extensions">read this first</a>.</p>
+<p>There are several pieces of configuration that the Developer Rig requires to function correctly:</p>
+<ul>
+<li><p>Client ID: the unique identifier for your Extension. Go to the <a href="https://dev.twitch.tv/dashboard/extensions">Extensions Dashboard</a>, select the Extension you want to run in the Developer Rig, then look for <code>Client ID</code> under <code>About This Extension</code>.</p>
+<img src="./docs/client-id.png" width="30%">
+</li>
+<li><p>Extension Secret: a valid secret, that allows your Extension to authenticate. Go to the <a href="https://dev.twitch.tv/dashboard/extensions">Extensions Dashboard</a>, select the Extension you want to run in the Developer Rig, select the <code>settings</code> tab, and then navigate to <code>Secret Keys</code> and create/retrieve a valid secret.</p>
+<img src="./docs/secret.png" width="60%">
+<p>This is <strong>not</strong> the <em>Client Secret</em> field located on the <em>General</em> tab under settings. Please ensure to go to <strong>Secret Keys</strong>.</p>
+</li>
+<li><p>Version: the exact version of an Extension to be loaded in the Developer Rig. Go to the <a href="https://dev.twitch.tv/dashboard/extensions">Extensions Dashboard</a>, find the Extension you want to run in the Developer Rig, and take note of the version number displayed under <code>status</code>.</p>
+<img src="./docs/version.png" width="60%">
+</li>
+</ul>
+<p>Values for these fields need to be injected as environment variables to the Developer Rig at startup. The environment variables names are:</p>
+<ul>
+<li><code>EXT_CLIENT_ID</code></li>
+<li><code>EXT_SECRET</code></li>
+<li><code>EXT_VERSION</code></li>
+</ul>
+<p>If you don't want to set these values via environment variables, all but the extension secret can be set through a configuration file. This file is specified via a command line argument and is in the format of</p>
+<pre><code class="language-javascript">{
+  &quot;clientID&quot;: &quot;&lt;client id&gt;&quot;,
+  &quot;version&quot;: &quot;&lt;version&gt;&quot;
+}
+</code></pre>
+<h3 id="starting-the-developer-rig-in-online-mode">Starting the Developer Rig in Online Mode</h3>
+<p>Ensure that the <a href="#installing-dependencies">Developer Rig dependencies</a> are installed and <a href="#developer-rig-configuration">required configuration</a> is available.</p>
+<p>To start the rig with environment variables, run:</p>
+<pre><code class="language-bash">EXT_CLIENT_ID=&lt;client id&gt; EXT_SECRET=&lt;secret&gt; EXT_VERSION=&lt;version&gt; yarn start
+</code></pre>
+<p>To start the rig with a config file and command line arguments, run:</p>
+<pre><code class="language-bash">yarn start -s &lt;secret&gt; -c location/of/your/config
+</code></pre>
+<p>The location of your config file can be either relative to the directory you are running the command or an absolute path to the file.</p>
+<p>This will cause your browser to open to <code>https://localhost.rig.twitch.tv:3000</code>.</p>
+<p><em>Note</em>: Depending on your browser and operating system, you may see a warning that the TLS certificate is illegitimate as it is self-signed. You can choose to proceed through this warning. TLS certificate generation occurs the first time the Developer Rig is started or it is used to host an example extension. Generated certificates are stored in the <code>ssl</code> directory. If you are on OSX, we'll generate and install the certs in the keychain. If you are on Windows or Linux, you'll have to configure that yourself.</p>
+<h3 id="using-the-developer-rig">Using the Developer Rig</h3>
+<p>The Developer Rig UI presents a variety of views, anchors, and contexts.</p>
+<h4 id="extension-views">Extension Views</h4>
+<p>This is likely the most used area for the Developer Rig. Views, anchors, and contexts can be configured to support comprehensive testing of an Extension.</p>
+<p>Click the <code>plus</code> button to add a new view for the configured Extension Client ID, and remove them by clicking on the <code>x</code> on a view.</p>
+<h4 id="broadcaster-config">Broadcaster Config</h4>
+<p>This section displays the Broadcaster Config view that is presented to broadcasters after they have installed an Extension, but before they are able to activate it.</p>
+<h4 id="live-config">Live Config</h4>
+<p>This section displays the Live Config view that appears on a broadcaster's dashboard for an Extension.</p>
+<h4 id="configurations">Configurations</h4>
+<p>The section displays manifest data pulled from Twitch for the corresponding Extension Client ID.</p>
+<h4 id="rig-console">Rig Console</h4>
+<p>At the bottom of every page, there is the Developer Rig Console. Extensions are able to output directly to this console by making the following call from their Extension's front-end javascript:</p>
+<pre><code>window.Twitch.ext.rig.log(&lt;message to log&gt;)
+</code></pre>
+<p>Each view is prefixed with the corresponding &quot;user context&quot;, i.e logged in viewer, broadcaster etc. An active video stream is not required to leverage video overlays in the Developer Rig. When an Extension is running in the Developer Rig, developers can interact with it just like an end user.</p>
+<h4 id="manage-bits-products">Manage Bits Products</h4>
+<p>For developers currently in the Bits Limited Preview, this tab will let you configure your various bits products for use in your extension.  You will need to sign in with your developer credentials to get this working.  If you are not currently in the Bits Limited Preview, you will not be able to access this page (but stay tuned for when it goes to general availability).</p>
+<h2 id="loading-an-example-extension">Loading an Example Extension</h2>
+<p>By default, the Developer Rig links to example Extension code available on <a href="https://github.com/TwitchDev/extensions-hello-world">GitHub</a>. To pull and link this code into the Developer Rig, run:</p>
+<pre><code class="language-bash"># Usage: yarn extension-init -a [github_account] -r [github_repo] -d [directory]
+yarn extension-init -d &lt;directory&gt;
+</code></pre>
+<p>To have the Developer Rig host the front-end assets of an Extension, use the <code>host</code> command. Assets for the example Extension can be hosted on <code>https://localhost.rig.twitch.tv:8080</code> by issuing the following command:</p>
+<pre><code class="language-bash"># Usage: yarn host -d &lt;directory&gt; -p [port]
+yarn host -d &lt;directory&gt;/public -p 8080
+</code></pre>
+<p><em>Ensure that the URL that the example Extension's Extension Back-end Service (EBS) is running on and the Extension secret, match what is specified in the dev site!</em></p>
+<img src="./docs/asset-hosting.png" width="70%">
+<p>In the above screenshot, assets are specified as being available at:</p>
+<pre><code>https://localhost:8080/viewer.html
+https://localhost:8080/config.html
+</code></pre>
+<p>If the Developer Rig is used to <code>host</code> an Extension's front-end assets, the <em>Testing Base URI</em> must be set to:</p>
+<pre><code>https://localhost.rig.twitch.tv:[port]
+</code></pre>
+<p>When an Extension has been loaded into the Developer Rig, refreshing your browser window will cause the latest Extension assets to be pulled into the page.</p>
+<h2 id="tldr">TL;DR</h2>
+<p>Conceptualizing how an Extension works can be tricky, particularly in the context of the Developer Rig. Three main pieces are needed:</p>
+<ul>
+<li>the Developer Rig service (i.e. <code>yarn start</code>)</li>
+<li>a service hosting the Extension front-end and associated assets (i.e. <code>yarn host</code>)</li>
+<li>an Extension Back-end Service (EBS)</li>
+</ul>
+<p>The Developer Rig loads the front-end assets into its pages. The front-end pages are able to call the EBS (signing requests with the Extension's JWT). An EBS can either respond directly to a front-end client, or is able to push messages to all connected front-ends via PubSub.</p>
+<p>If you are experience difficulties getting things to work:</p>
+<ul>
+<li>ensure that everything is running on HTTPS and accessible in your browser</li>
+<li>ensure that the secret that is loaded into the Developer Rig matches the secret present in your EBS</li>
+<li>if you are struggling to get PubSub to work, assert that your EBS receives and extracts the channel name from the JWT sent by the Extension front-end</li>
+</ul>
+<h2 id="using-local-mode">Using Local Mode</h2>
+<p>Local Mode enables developers to run their extension projects against
+mock APIs and mock PubSub locally on their machine.  Developers can
+start building extensions without having first gone through the
+Twitch Extension Developer onboarding.  Additionally,
+it provides an ability to perform integration tests against your
+extension via configurable responses to the Extensions Helper Library.
+The following sections will illustrate how to use Local Mode in the Rig.</p>
+<p>There are several options for creating an extension manifest file.  The
+example above creates an extension manifest file for a panel extension.
+There are four types of extensions.  You may specify multiple types
+for the <code>-t</code> parameter, any combination of <em>panel</em>, <em>video_overlay</em>,
+<em>mobile</em> and <em>video_component</em>.  There are other options for panel or
+component attributes along with some text descriptors.  They all have
+reasonable defaults; specifying them is optional.  For more information
+on the available options, run <code>yarn create-manifest -h</code> in a terminal
+window.  Note that you can edit the JSON file to make changes or
+adjustments.</p>
+<h3 id="using-the-run-list-in-the-rig">Using the Run List in the Rig</h3>
+<p>The foundation of Local Mode is a JSON document called the &quot;Run List&quot;.  It provides developers the ability to trigger specific callback responses through the Extensions Helper Library. To your extension, it will appear like these have come from Twitch Extension APIs.</p>
+<p>When you get the Local Mode edition of the rig, it will contain a Run List pre-populated with mock responses.  You'll be able to alter these responses by directly editing the document.</p>
+<p>When Local Mode is enabled, each extension view will have a dropdown that enables the developer to choose a response from the &quot;Run List&quot;.  When a response is selected, clicking the &quot;Trigger&quot; button will send it through the Extension Coordinator and it will pass through Helper to your extension code.</p>
+<p>Different views can be pointing at different places in the &quot;Run List&quot; at the same time.</p>
+<p>For more details about the APIs and responses see the documentation <a href="https://dev.twitch.tv/docs/extensions/reference/#javascript-helper">here</a>.</p>
+<h3 id="editing-the-run-list">Editing the Run List</h3>
+<p>To edit the &quot;Run List&quot; look for the document called runlist.json in your Rig directory.  Each entry in the Run List has 3 components:</p>
+<ol>
+<li>A name for easy identification</li>
+<li>The type of callback e.g OnContext</li>
+<li>The callback response</li>
+</ol>
+<p>Refer to the Helper API documentation <a href="https://dev.twitch.tv/docs/extensions/reference/#javascript-helper">here</a> before editing and creating new responses.</p>
+<h3 id="providing-a-secret-for-your-ebs-in-local-mode">Providing a Secret for Your EBS in Local Mode</h3>
+<p>When you use Local Mode with your EBS, you'll be using a hard-coded secret in the Rig.  This is also included already in the Hello World example.  When creating an extension on Twitch, you'll have your own client ID and secret.</p>
+<p>The base-64-encoded Local Mode Secret is: <code>kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</code></p>
+<p>Do <strong>not</strong> expose your EBS beyond your local machine while using the Local Mode secret.  It is purely meant to speed up initial development.</p>
+<h3 id="using-mock-pub-sub">Using Mock Pub Sub</h3>
+<p>When you are in Local Mode, to make calls to Pub Sub, it's important to make sure your EBS is pointing at the correct URI.  You'll want to be making calls to <code>localhost.rig.twitch.tv:3000/extensions/message</code> as opposed to <code>api.twitch.tv/extensions/message</code> in order to correctly send your message.  Format the rest of your message the same as if you were sending to Twitch PubSub.  See the Hello World <code>backend.js</code> file for examples.</p>
+<h3 id="editing-the-local-extension-manifest">Editing the Local Extension Manifest</h3>
+<p>After you create your local extension manifest, you can open up <code>manifest.json</code> and edit the fields directly.  Most of the fields are not relevant to running your extension locally in the Developer Rig, but you should be aware of a few:</p>
+<ul>
+<li><code>name</code>: Not critical for Local Mode, but it's always important to give your project a sweet name</li>
+<li><code>anchor</code>: This should be left blank</li>
+<li><code>panel_height</code>: This is the height of a panel extension. Default is 300 pixels and must be between 100 and 500 pixels.  For Panel extensions only.</li>
+<li>URLS of various views - When adding a view in the rig, it will look to these for the front-end assets.  If you use the Rig <code>host</code> command, be sure to make sure the port and base URI are correct.</li>
+<li><code>aspect_width</code>: expressed as a % of the screen width and must be &lt; 50%.  Note that the manifest file will express 30% as 3000.  For Component Extensions only.</li>
+<li><code>aspect_height</code>: expressed as a % of the screen height from 1% to 100%.  Note that the manifest file will express 30% as 3000.  For Component Extensions only.</li>
+<li><code>zoom_pixels</code>: default is 1024.  For Component extensions only.</li>
+<li><code>zoom</code>: default is <code>true</code>.  For Component Extensions only</li>
+</ul>
+<p>When creating additional manifests, use the <strong>-h</strong> flag to see what additional arguments you can add.</p>
+<h2 id="faqs">FAQs</h2>
+<p><em>Can I use the Developer Rig without first completing Extensions Developer On-boarding?</em></p>
+<blockquote>
+<p>Yes, but you must use the Developer Rig in Local Mode. For Online Mode, valid client IDs and Extension secrets are required to leverage the Developer Rig. Currently, these can only be generated on the Twitch Dev Site, once on-boarding is complete.</p>
+</blockquote>
+<p><em>Are the Extensions Actions supported?</em></p>
+<blockquote>
+<p>Extensions Actions will be added shortly to the Developer Rig.</p>
+</blockquote>
+<p><em>XXX in the Developer Rig sucks! The Developer Rig is missing feature YYY!</em></p>
+<blockquote>
+<p>Neither of these are questions :) . Raise a PR with proposed changes, and let's help each other!</p>
+</blockquote>
+<p><em>What are these Twitch Extensions of which you speak, and how can I learn more?</em></p>
+<blockquote>
+<p>More information about Twitch Extensions is available on the <a href="https://dev.twitch.tv/extensions">Twitch Developer Site</a>, and in the <a href="https://discuss.dev.twitch.tv/c/extensions">Twitch Developer Forums</a>.</p>
+</blockquote>
+<p><em>The linked Hello World repository uses <code>EXT_OWNER_ID</code> while the Developer Rig uses <code>EXT_OWNER_NAME</code>. What's up with that?</em></p>
+<blockquote>
+<p>The Developer Rig uses an API call to the Twitch /users endpoint to retrieve an owner's user id. This has not been done yet in the Hello World repository. It should be added shortly.</p>
+</blockquote>
+<p><em>What browsers and platforms are supported?</em></p>
+<blockquote>
+<p>We know the Developer Rig works in Chrome and Firefox on Mac and Windows. Feel free to help ensure it works in other browsers and platforms!</p>
+</blockquote>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p><em>The Extension I have specified is not appearing the Developer Rig.</em></p>
+<blockquote>
+<p>There are a number of things that can create problems. The most common causes are: <a href="#installing-dependencies">invalid NPM or NodeJS installations</a>; <a href="#host-file">a missing host file entry for the Developer Rig</a>; <a href="#starting-the-developer-rig">misconfigured Environment variables being passed to the Developer Rig</a>; or <a href="#developer-rig-configuration">Extension configuration that does not match the contents of the Twitch Developer Site</a>.</p>
+</blockquote>
+<p><em>I am certain that my Developer Rig Configuration is correct, but my Extension is still not working.</em></p>
+<blockquote>
+<p>Clear your browser cache and local storage, restart the Developer Rig, and cross your fingers. To delete its local storage, use your browser's developer tools to do so then refresh your browser. Ensure you've included the <a href="https://extension-files.twitch.tv/helper/v1/twitch-ext.min.js">Twitch Extension Helper</a> in your front-end files.</p>
+</blockquote>
+<p><em>I see an error when attempting to run <code>yarn test</code>.</em></p>
+<blockquote>
+<p>Sometimes deleting and reinstalling your <code>node_modules</code> can correct this issue. On MacOS, you may need to explicitly install watchman via <code>brew install watchman</code>.</p>
+</blockquote>
+<p><em><code>yarn install</code> fails in <code>libssh2</code></em></p>
+<blockquote>
+<p>See issue <a href="https://github.com/twitchdev/developer-rig/issues/48">#48</a>. Be sure <code>libssh</code> and its dependencies are installed.</p>
+</blockquote>
+<p><em>I get an error when pulling in the example project!</em></p>
+<blockquote>
+<p>Ensure that Git is in your PATH variable by attempting to run &quot;git&quot; at your commmand line. If that works, also ensure that you don't already have the example project folder.</p>
+</blockquote>
+<p><em>The Developer Rig stops running unexpectedly in Local Mode.</em></p>
+<blockquote>
+<p>Try deleting the <code>node_modules</code> directory and rerunning <code>yarn install</code>.</p>
+</blockquote>
+<p><em>I recently updated Windows and now the scripts don't run.</em></p>
+<blockquote>
+<p>Turn on &quot;Developer mode&quot; in the &quot;For developers&quot; settings.  (Press Windows-X and select &quot;Settings&quot;.  &quot;For developers&quot; is under &quot;Update &amp; security&quot;.)  Also, ensure the last checkbox on that page (the one for PowerShell script execution policy) is checked.</p>
+</blockquote>
+
+
+</body>
+</html>

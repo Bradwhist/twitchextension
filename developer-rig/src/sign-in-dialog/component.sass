@@ -1,0 +1,56 @@
+@import "../dialog-component/component.sass"
+.sign-in
+
+.sign-in__background
+  @extend .dialog__backdrop
+
+.sign-in__dialog
+  @extend .dialog
+  height: 380px
+  width: 600px
+  margin: auto
+  left: 30%
+
+.sign-in__content
+  @extend .container__left-block
+  white-space: pre
+  overflow-y: auto
+  height: 250px
+  width: 100%
+
+.dialog__top-bar-container
+  @extend .top-bar
+
+.top-bar-container__title
+  @extend .top-bar-element-left
+  margin-top: 5px
+
+.top-bar-container__escape
+  @extend .top-bar-element-right
+  width: $top-bar-dimension
+  cursor: pointer
+  width: 4em
+  margin-top: 5px
+
+.dialog__divider
+  @extend .dialog__divider-width
+  width: 93%
+
+.sign-in__bottom-bar
+  @extend .container__left-block
+  margin-top: 2rem
+  width: 22rem
+  .login-button
+    margin: auto
+    width: 10rem
+
+.bottom-bar__refresh
+  @include bottom-bar-box(white, #7D55C7)
+
+.bottom-bar__cancel
+  @include bottom-bar-box(#7D55C7, white)
+
+.sign-in__text
+  margin-left: 20px
+  width: 90%
+  font-size: 12px

@@ -1,0 +1,281 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DivOption /> renders correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <DivOption
+    checked={false}
+    img="test.png"
+    name="test"
+    onChange={[Function]}
+    value="test"
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <label
+        className="extension-type-label"
+>
+        <input
+                defaultChecked={false}
+                name="extensionViewType"
+                onChange={[Function]}
+                type="radio"
+                value="test"
+        />
+        <div
+                className="extension-type-box"
+        >
+                <img
+                        alt="test"
+                        className="extension-type-box__img"
+                        src="test.png"
+                />
+        </div>
+        <div
+                className="extension-type-text"
+        >
+                test
+        </div>
+</label>,
+      "className": "extension-container__block",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <input
+            defaultChecked={false}
+            name="extensionViewType"
+            onChange={[Function]}
+            type="radio"
+            value="test"
+/>,
+          <div
+            className="extension-type-box"
+>
+            <img
+                        alt="test"
+                        className="extension-type-box__img"
+                        src="test.png"
+            />
+</div>,
+          <div
+            className="extension-type-text"
+>
+            test
+</div>,
+        ],
+        "className": "extension-type-label",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "defaultChecked": false,
+            "name": "extensionViewType",
+            "onChange": [Function],
+            "type": "radio",
+            "value": "test",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "input",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <img
+              alt="test"
+              className="extension-type-box__img"
+              src="test.png"
+/>,
+            "className": "extension-type-box",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "alt": "test",
+              "className": "extension-type-box__img",
+              "src": "test.png",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "img",
+          },
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "test",
+            "className": "extension-type-text",
+          },
+          "ref": null,
+          "rendered": "test",
+          "type": "div",
+        },
+      ],
+      "type": "label",
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <label
+          className="extension-type-label"
+>
+          <input
+                    defaultChecked={false}
+                    name="extensionViewType"
+                    onChange={[Function]}
+                    type="radio"
+                    value="test"
+          />
+          <div
+                    className="extension-type-box"
+          >
+                    <img
+                              alt="test"
+                              className="extension-type-box__img"
+                              src="test.png"
+                    />
+          </div>
+          <div
+                    className="extension-type-text"
+          >
+                    test
+          </div>
+</label>,
+        "className": "extension-container__block",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <input
+              defaultChecked={false}
+              name="extensionViewType"
+              onChange={[Function]}
+              type="radio"
+              value="test"
+/>,
+            <div
+              className="extension-type-box"
+>
+              <img
+                            alt="test"
+                            className="extension-type-box__img"
+                            src="test.png"
+              />
+</div>,
+            <div
+              className="extension-type-text"
+>
+              test
+</div>,
+          ],
+          "className": "extension-type-label",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "defaultChecked": false,
+              "name": "extensionViewType",
+              "onChange": [Function],
+              "type": "radio",
+              "value": "test",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "input",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <img
+                alt="test"
+                className="extension-type-box__img"
+                src="test.png"
+/>,
+              "className": "extension-type-box",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "alt": "test",
+                "className": "extension-type-box__img",
+                "src": "test.png",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "img",
+            },
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "test",
+              "className": "extension-type-text",
+            },
+            "ref": null,
+            "rendered": "test",
+            "type": "div",
+          },
+        ],
+        "type": "label",
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

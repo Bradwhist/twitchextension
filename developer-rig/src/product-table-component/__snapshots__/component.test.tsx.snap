@@ -1,0 +1,2655 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductRow /> renders correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Unknown
+    product={
+        Object {
+            "amount": 100,
+            "broadcast": "false",
+            "deprecated": false,
+            "dirty": false,
+            "displayName": "Test Product 1",
+            "inDevelopment": "false",
+            "savedInCatalog": true,
+            "sku": "testSku1",
+            "validationErrors": Object {
+              "sku": "SKU must be unique",
+            },
+          }
+    }
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div
+          className="text-col"
+>
+          <input
+                    className="form__input"
+                    maxLength={255}
+                    name="displayName"
+                    onChange={undefined}
+                    required={true}
+                    type="text"
+                    value="Test Product 1"
+          />
+          <p
+                    className="invalid-hint"
+          />
+</div>,
+        <div
+          className="text-col"
+>
+          <input
+                    className="form__input invalid"
+                    disabled={true}
+                    maxLength={255}
+                    name="sku"
+                    onChange={undefined}
+                    required={true}
+                    type="text"
+                    value="testSku1"
+          />
+          <p
+                    className="invalid-hint"
+          >
+                    SKU must be unique
+          </p>
+</div>,
+        <div
+          className="text-col"
+>
+          <input
+                    className="form__input"
+                    max="10000"
+                    min="1"
+                    name="amount"
+                    onChange={undefined}
+                    required={true}
+                    type="number"
+                    value={100}
+          />
+          <p
+                    className="invalid-hint"
+          />
+</div>,
+        <div
+          className="select-col"
+>
+          <select
+                    className="form__input"
+                    name="inDevelopment"
+                    onChange={undefined}
+                    value="false"
+          >
+                    <option
+                              value="true"
+                    >
+                              Yes
+                    </option>
+                    <option
+                              value="false"
+                    >
+                              No
+                    </option>
+          </select>
+          <p
+                    className="invalid-hint"
+          />
+</div>,
+        <div
+          className="select-col"
+>
+          <select
+                    className="form__input"
+                    name="broadcast"
+                    onChange={undefined}
+                    value="false"
+          >
+                    <option
+                              value="true"
+                    >
+                              Yes
+                    </option>
+                    <option
+                              value="false"
+                    >
+                              No
+                    </option>
+          </select>
+          <p
+                    className="invalid-hint"
+          />
+</div>,
+        <div
+          className="button-col"
+>
+          <button
+                    className="product-row__deprecate-button"
+                    onClick={undefined}
+          >
+                    Deprecate
+          </button>
+          <p
+                    className="invalid-hint"
+          />
+</div>,
+        <div
+          className="dirty-col"
+>
+          <div
+                    className="dirty-indicator hidden"
+          >
+                    <svg
+                              height="30"
+                              width="30"
+                              xmlns="http://www.w3.org/2000/svg"
+                    >
+                              <circle
+                                        cx="5"
+                                        cy="5"
+                                        r="3"
+                              />
+                    </svg>
+          </div>
+          <p
+                    className="invalid-hint"
+          />
+</div>,
+      ],
+      "className": "product-table__row",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <input
+              className="form__input"
+              maxLength={255}
+              name="displayName"
+              onChange={undefined}
+              required={true}
+              type="text"
+              value="Test Product 1"
+/>,
+            <p
+              className="invalid-hint"
+/>,
+          ],
+          "className": "text-col",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": "form__input",
+              "maxLength": 255,
+              "name": "displayName",
+              "onChange": undefined,
+              "required": true,
+              "type": "text",
+              "value": "Test Product 1",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "input",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": undefined,
+              "className": "invalid-hint",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "p",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <input
+              className="form__input invalid"
+              disabled={true}
+              maxLength={255}
+              name="sku"
+              onChange={undefined}
+              required={true}
+              type="text"
+              value="testSku1"
+/>,
+            <p
+              className="invalid-hint"
+>
+              SKU must be unique
+</p>,
+          ],
+          "className": "text-col",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": "form__input invalid",
+              "disabled": true,
+              "maxLength": 255,
+              "name": "sku",
+              "onChange": undefined,
+              "required": true,
+              "type": "text",
+              "value": "testSku1",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "input",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "SKU must be unique",
+              "className": "invalid-hint",
+            },
+            "ref": null,
+            "rendered": "SKU must be unique",
+            "type": "p",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <input
+              className="form__input"
+              max="10000"
+              min="1"
+              name="amount"
+              onChange={undefined}
+              required={true}
+              type="number"
+              value={100}
+/>,
+            <p
+              className="invalid-hint"
+/>,
+          ],
+          "className": "text-col",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": "form__input",
+              "max": "10000",
+              "min": "1",
+              "name": "amount",
+              "onChange": undefined,
+              "required": true,
+              "type": "number",
+              "value": 100,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "input",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": undefined,
+              "className": "invalid-hint",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "p",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <select
+              className="form__input"
+              name="inDevelopment"
+              onChange={undefined}
+              value="false"
+>
+              <option
+                            value="true"
+              >
+                            Yes
+              </option>
+              <option
+                            value="false"
+              >
+                            No
+              </option>
+</select>,
+            <p
+              className="invalid-hint"
+/>,
+          ],
+          "className": "select-col",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <option
+                  value="true"
+>
+                  Yes
+</option>,
+                <option
+                  value="false"
+>
+                  No
+</option>,
+              ],
+              "className": "form__input",
+              "name": "inDevelopment",
+              "onChange": undefined,
+              "value": "false",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Yes",
+                  "value": "true",
+                },
+                "ref": null,
+                "rendered": "Yes",
+                "type": "option",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "No",
+                  "value": "false",
+                },
+                "ref": null,
+                "rendered": "No",
+                "type": "option",
+              },
+            ],
+            "type": "select",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": undefined,
+              "className": "invalid-hint",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "p",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <select
+              className="form__input"
+              name="broadcast"
+              onChange={undefined}
+              value="false"
+>
+              <option
+                            value="true"
+              >
+                            Yes
+              </option>
+              <option
+                            value="false"
+              >
+                            No
+              </option>
+</select>,
+            <p
+              className="invalid-hint"
+/>,
+          ],
+          "className": "select-col",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <option
+                  value="true"
+>
+                  Yes
+</option>,
+                <option
+                  value="false"
+>
+                  No
+</option>,
+              ],
+              "className": "form__input",
+              "name": "broadcast",
+              "onChange": undefined,
+              "value": "false",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Yes",
+                  "value": "true",
+                },
+                "ref": null,
+                "rendered": "Yes",
+                "type": "option",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "No",
+                  "value": "false",
+                },
+                "ref": null,
+                "rendered": "No",
+                "type": "option",
+              },
+            ],
+            "type": "select",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": undefined,
+              "className": "invalid-hint",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "p",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <button
+              className="product-row__deprecate-button"
+              onClick={undefined}
+>
+              Deprecate
+</button>,
+            <p
+              className="invalid-hint"
+/>,
+          ],
+          "className": "button-col",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Deprecate",
+              "className": "product-row__deprecate-button",
+              "onClick": undefined,
+            },
+            "ref": null,
+            "rendered": "Deprecate",
+            "type": "button",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": "invalid-hint",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "p",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="dirty-indicator hidden"
+>
+              <svg
+                            height="30"
+                            width="30"
+                            xmlns="http://www.w3.org/2000/svg"
+              >
+                            <circle
+                                          cx="5"
+                                          cy="5"
+                                          r="3"
+                            />
+              </svg>
+</div>,
+            <p
+              className="invalid-hint"
+/>,
+          ],
+          "className": "dirty-col",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <svg
+                height="30"
+                width="30"
+                xmlns="http://www.w3.org/2000/svg"
+>
+                <circle
+                                cx="5"
+                                cy="5"
+                                r="3"
+                />
+</svg>,
+              "className": "dirty-indicator hidden",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <circle
+                  cx="5"
+                  cy="5"
+                  r="3"
+/>,
+                "height": "30",
+                "width": "30",
+                "xmlns": "http://www.w3.org/2000/svg",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "cx": "5",
+                  "cy": "5",
+                  "r": "3",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "circle",
+              },
+              "type": "svg",
+            },
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": "invalid-hint",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "p",
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="text-col"
+>
+            <input
+                        className="form__input"
+                        maxLength={255}
+                        name="displayName"
+                        onChange={undefined}
+                        required={true}
+                        type="text"
+                        value="Test Product 1"
+            />
+            <p
+                        className="invalid-hint"
+            />
+</div>,
+          <div
+            className="text-col"
+>
+            <input
+                        className="form__input invalid"
+                        disabled={true}
+                        maxLength={255}
+                        name="sku"
+                        onChange={undefined}
+                        required={true}
+                        type="text"
+                        value="testSku1"
+            />
+            <p
+                        className="invalid-hint"
+            >
+                        SKU must be unique
+            </p>
+</div>,
+          <div
+            className="text-col"
+>
+            <input
+                        className="form__input"
+                        max="10000"
+                        min="1"
+                        name="amount"
+                        onChange={undefined}
+                        required={true}
+                        type="number"
+                        value={100}
+            />
+            <p
+                        className="invalid-hint"
+            />
+</div>,
+          <div
+            className="select-col"
+>
+            <select
+                        className="form__input"
+                        name="inDevelopment"
+                        onChange={undefined}
+                        value="false"
+            >
+                        <option
+                                    value="true"
+                        >
+                                    Yes
+                        </option>
+                        <option
+                                    value="false"
+                        >
+                                    No
+                        </option>
+            </select>
+            <p
+                        className="invalid-hint"
+            />
+</div>,
+          <div
+            className="select-col"
+>
+            <select
+                        className="form__input"
+                        name="broadcast"
+                        onChange={undefined}
+                        value="false"
+            >
+                        <option
+                                    value="true"
+                        >
+                                    Yes
+                        </option>
+                        <option
+                                    value="false"
+                        >
+                                    No
+                        </option>
+            </select>
+            <p
+                        className="invalid-hint"
+            />
+</div>,
+          <div
+            className="button-col"
+>
+            <button
+                        className="product-row__deprecate-button"
+                        onClick={undefined}
+            >
+                        Deprecate
+            </button>
+            <p
+                        className="invalid-hint"
+            />
+</div>,
+          <div
+            className="dirty-col"
+>
+            <div
+                        className="dirty-indicator hidden"
+            >
+                        <svg
+                                    height="30"
+                                    width="30"
+                                    xmlns="http://www.w3.org/2000/svg"
+                        >
+                                    <circle
+                                                cx="5"
+                                                cy="5"
+                                                r="3"
+                                    />
+                        </svg>
+            </div>
+            <p
+                        className="invalid-hint"
+            />
+</div>,
+        ],
+        "className": "product-table__row",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <input
+                className="form__input"
+                maxLength={255}
+                name="displayName"
+                onChange={undefined}
+                required={true}
+                type="text"
+                value="Test Product 1"
+/>,
+              <p
+                className="invalid-hint"
+/>,
+            ],
+            "className": "text-col",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "form__input",
+                "maxLength": 255,
+                "name": "displayName",
+                "onChange": undefined,
+                "required": true,
+                "type": "text",
+                "value": "Test Product 1",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "input",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": undefined,
+                "className": "invalid-hint",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "p",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <input
+                className="form__input invalid"
+                disabled={true}
+                maxLength={255}
+                name="sku"
+                onChange={undefined}
+                required={true}
+                type="text"
+                value="testSku1"
+/>,
+              <p
+                className="invalid-hint"
+>
+                SKU must be unique
+</p>,
+            ],
+            "className": "text-col",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "form__input invalid",
+                "disabled": true,
+                "maxLength": 255,
+                "name": "sku",
+                "onChange": undefined,
+                "required": true,
+                "type": "text",
+                "value": "testSku1",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "input",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "SKU must be unique",
+                "className": "invalid-hint",
+              },
+              "ref": null,
+              "rendered": "SKU must be unique",
+              "type": "p",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <input
+                className="form__input"
+                max="10000"
+                min="1"
+                name="amount"
+                onChange={undefined}
+                required={true}
+                type="number"
+                value={100}
+/>,
+              <p
+                className="invalid-hint"
+/>,
+            ],
+            "className": "text-col",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "form__input",
+                "max": "10000",
+                "min": "1",
+                "name": "amount",
+                "onChange": undefined,
+                "required": true,
+                "type": "number",
+                "value": 100,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "input",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": undefined,
+                "className": "invalid-hint",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "p",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <select
+                className="form__input"
+                name="inDevelopment"
+                onChange={undefined}
+                value="false"
+>
+                <option
+                                value="true"
+                >
+                                Yes
+                </option>
+                <option
+                                value="false"
+                >
+                                No
+                </option>
+</select>,
+              <p
+                className="invalid-hint"
+/>,
+            ],
+            "className": "select-col",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <option
+                    value="true"
+>
+                    Yes
+</option>,
+                  <option
+                    value="false"
+>
+                    No
+</option>,
+                ],
+                "className": "form__input",
+                "name": "inDevelopment",
+                "onChange": undefined,
+                "value": "false",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Yes",
+                    "value": "true",
+                  },
+                  "ref": null,
+                  "rendered": "Yes",
+                  "type": "option",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "No",
+                    "value": "false",
+                  },
+                  "ref": null,
+                  "rendered": "No",
+                  "type": "option",
+                },
+              ],
+              "type": "select",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": undefined,
+                "className": "invalid-hint",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "p",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <select
+                className="form__input"
+                name="broadcast"
+                onChange={undefined}
+                value="false"
+>
+                <option
+                                value="true"
+                >
+                                Yes
+                </option>
+                <option
+                                value="false"
+                >
+                                No
+                </option>
+</select>,
+              <p
+                className="invalid-hint"
+/>,
+            ],
+            "className": "select-col",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <option
+                    value="true"
+>
+                    Yes
+</option>,
+                  <option
+                    value="false"
+>
+                    No
+</option>,
+                ],
+                "className": "form__input",
+                "name": "broadcast",
+                "onChange": undefined,
+                "value": "false",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Yes",
+                    "value": "true",
+                  },
+                  "ref": null,
+                  "rendered": "Yes",
+                  "type": "option",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "No",
+                    "value": "false",
+                  },
+                  "ref": null,
+                  "rendered": "No",
+                  "type": "option",
+                },
+              ],
+              "type": "select",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": undefined,
+                "className": "invalid-hint",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "p",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <button
+                className="product-row__deprecate-button"
+                onClick={undefined}
+>
+                Deprecate
+</button>,
+              <p
+                className="invalid-hint"
+/>,
+            ],
+            "className": "button-col",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Deprecate",
+                "className": "product-row__deprecate-button",
+                "onClick": undefined,
+              },
+              "ref": null,
+              "rendered": "Deprecate",
+              "type": "button",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "invalid-hint",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "p",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div
+                className="dirty-indicator hidden"
+>
+                <svg
+                                height="30"
+                                width="30"
+                                xmlns="http://www.w3.org/2000/svg"
+                >
+                                <circle
+                                                cx="5"
+                                                cy="5"
+                                                r="3"
+                                />
+                </svg>
+</div>,
+              <p
+                className="invalid-hint"
+/>,
+            ],
+            "className": "dirty-col",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <svg
+                  height="30"
+                  width="30"
+                  xmlns="http://www.w3.org/2000/svg"
+>
+                  <circle
+                                    cx="5"
+                                    cy="5"
+                                    r="3"
+                  />
+</svg>,
+                "className": "dirty-indicator hidden",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": <circle
+                    cx="5"
+                    cy="5"
+                    r="3"
+/>,
+                  "height": "30",
+                  "width": "30",
+                  "xmlns": "http://www.w3.org/2000/svg",
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "cx": "5",
+                    "cy": "5",
+                    "r": "3",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "circle",
+                },
+                "type": "svg",
+              },
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "invalid-hint",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "p",
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`<ProductTableComponent /> renders correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ProductTableComponent
+    addProduct={[Function]}
+    changeProductValue={[Function]}
+    clientId="client-id"
+    error=""
+    loadProductsFailure={[Function]}
+    loadProductsSuccess={[Function]}
+    products={
+        Array [
+            Object {
+              "amount": 100,
+              "broadcast": "false",
+              "deprecated": false,
+              "dirty": false,
+              "displayName": "Test Product 1",
+              "inDevelopment": "false",
+              "savedInCatalog": true,
+              "sku": "testSku1",
+              "validationErrors": Object {},
+            },
+            Object {
+              "amount": 500,
+              "broadcast": "false",
+              "deprecated": false,
+              "dirty": false,
+              "displayName": "Test Product 2",
+              "inDevelopment": "true",
+              "savedInCatalog": true,
+              "sku": "testSku2",
+              "validationErrors": Object {},
+            },
+          ]
+    }
+    saveProductsFailure={[Function]}
+    saveProductsSuccess={[Function]}
+    token="token"
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        "",
+        <div>
+          <div
+                    className="product-table__category"
+          >
+                    Live
+          </div>
+          <div
+                    className="product-table__header"
+          >
+                    <div
+                              className="text-col balloon-wrapper"
+                    >
+                              Product Name
+                              <div
+                                        className="balloon"
+                              >
+                                        Name to display for this product in your extension.
+                              </div>
+                    </div>
+                    <div
+                              className="text-col balloon-wrapper"
+                    >
+                              SKU
+                              <div
+                                        className="balloon"
+                              >
+                                        Unique SKU to identify this product. Cannot be changed after saving. Must not contain whitespace.
+                              </div>
+                    </div>
+                    <div
+                              className="text-col balloon-wrapper"
+                    >
+                              Amount (in Bits)
+                              <div
+                                        className="balloon"
+                              >
+                                        Amount of Bits to offer this product for. Must be between 1 and 10,000.
+                              </div>
+                    </div>
+                    <div
+                              className="select-col balloon-wrapper"
+                    >
+                              In Development
+                              <div
+                                        className="balloon"
+                              >
+                                        Setting this to yes will cause this product to not be displayed in a released extension.
+                              </div>
+                    </div>
+                    <div
+                              className="select-col balloon-wrapper"
+                    >
+                              Broadcast
+                              <div
+                                        className="balloon"
+                              >
+                                        Setting this to yes will notify all instances of your extension on a channel when a transaction for this product has completed.
+                              </div>
+                    </div>
+                    <div
+                              className="button-col"
+                    />
+                    <div
+                              className="dirty-col"
+                    />
+          </div>
+          <Unknown
+                    handleDeprecateClick={[Function]}
+                    handleValueChange={[Function]}
+                    product={
+                              Object {
+                                        "amount": 100,
+                                        "broadcast": "false",
+                                        "deprecated": false,
+                                        "dirty": false,
+                                        "displayName": "Test Product 1",
+                                        "inDevelopment": "false",
+                                        "savedInCatalog": true,
+                                        "sku": "testSku1",
+                                        "validationErrors": Object {},
+                                      }
+                    }
+          />
+          <Unknown
+                    handleDeprecateClick={[Function]}
+                    handleValueChange={[Function]}
+                    product={
+                              Object {
+                                        "amount": 500,
+                                        "broadcast": "false",
+                                        "deprecated": false,
+                                        "dirty": false,
+                                        "displayName": "Test Product 2",
+                                        "inDevelopment": "true",
+                                        "savedInCatalog": true,
+                                        "sku": "testSku2",
+                                        "validationErrors": Object {},
+                                      }
+                    }
+          />
+</div>,
+        false,
+        <div
+          className="product-table__buttons"
+>
+          <button
+                    className="product-table__add-button"
+                    disabled={false}
+                    onClick={[Function]}
+          >
+                    Add Product
+          </button>
+          <button
+                    className="product-table__save-button"
+                    disabled={false}
+                    onClick={[Function]}
+          >
+                    Save All
+          </button>
+</div>,
+      ],
+      "className": "product-table",
+    },
+    "ref": null,
+    "rendered": Array [
+      "",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="product-table__category"
+>
+              Live
+</div>,
+            <div
+              className="product-table__header"
+>
+              <div
+                            className="text-col balloon-wrapper"
+              >
+                            Product Name
+                            <div
+                                          className="balloon"
+                            >
+                                          Name to display for this product in your extension.
+                            </div>
+              </div>
+              <div
+                            className="text-col balloon-wrapper"
+              >
+                            SKU
+                            <div
+                                          className="balloon"
+                            >
+                                          Unique SKU to identify this product. Cannot be changed after saving. Must not contain whitespace.
+                            </div>
+              </div>
+              <div
+                            className="text-col balloon-wrapper"
+              >
+                            Amount (in Bits)
+                            <div
+                                          className="balloon"
+                            >
+                                          Amount of Bits to offer this product for. Must be between 1 and 10,000.
+                            </div>
+              </div>
+              <div
+                            className="select-col balloon-wrapper"
+              >
+                            In Development
+                            <div
+                                          className="balloon"
+                            >
+                                          Setting this to yes will cause this product to not be displayed in a released extension.
+                            </div>
+              </div>
+              <div
+                            className="select-col balloon-wrapper"
+              >
+                            Broadcast
+                            <div
+                                          className="balloon"
+                            >
+                                          Setting this to yes will notify all instances of your extension on a channel when a transaction for this product has completed.
+                            </div>
+              </div>
+              <div
+                            className="button-col"
+              />
+              <div
+                            className="dirty-col"
+              />
+</div>,
+            Array [
+              <Unknown
+                handleDeprecateClick={[Function]}
+                handleValueChange={[Function]}
+                product={
+                                Object {
+                                                "amount": 100,
+                                                "broadcast": "false",
+                                                "deprecated": false,
+                                                "dirty": false,
+                                                "displayName": "Test Product 1",
+                                                "inDevelopment": "false",
+                                                "savedInCatalog": true,
+                                                "sku": "testSku1",
+                                                "validationErrors": Object {},
+                                              }
+                }
+/>,
+              <Unknown
+                handleDeprecateClick={[Function]}
+                handleValueChange={[Function]}
+                product={
+                                Object {
+                                                "amount": 500,
+                                                "broadcast": "false",
+                                                "deprecated": false,
+                                                "dirty": false,
+                                                "displayName": "Test Product 2",
+                                                "inDevelopment": "true",
+                                                "savedInCatalog": true,
+                                                "sku": "testSku2",
+                                                "validationErrors": Object {},
+                                              }
+                }
+/>,
+            ],
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Live",
+              "className": "product-table__category",
+            },
+            "ref": null,
+            "rendered": "Live",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <div
+                  className="text-col balloon-wrapper"
+>
+                  Product Name
+                  <div
+                                    className="balloon"
+                  >
+                                    Name to display for this product in your extension.
+                  </div>
+</div>,
+                <div
+                  className="text-col balloon-wrapper"
+>
+                  SKU
+                  <div
+                                    className="balloon"
+                  >
+                                    Unique SKU to identify this product. Cannot be changed after saving. Must not contain whitespace.
+                  </div>
+</div>,
+                <div
+                  className="text-col balloon-wrapper"
+>
+                  Amount (in Bits)
+                  <div
+                                    className="balloon"
+                  >
+                                    Amount of Bits to offer this product for. Must be between 1 and 10,000.
+                  </div>
+</div>,
+                <div
+                  className="select-col balloon-wrapper"
+>
+                  In Development
+                  <div
+                                    className="balloon"
+                  >
+                                    Setting this to yes will cause this product to not be displayed in a released extension.
+                  </div>
+</div>,
+                <div
+                  className="select-col balloon-wrapper"
+>
+                  Broadcast
+                  <div
+                                    className="balloon"
+                  >
+                                    Setting this to yes will notify all instances of your extension on a channel when a transaction for this product has completed.
+                  </div>
+</div>,
+                <div
+                  className="button-col"
+/>,
+                <div
+                  className="dirty-col"
+/>,
+              ],
+              "className": "product-table__header",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Product Name",
+                    <div
+                      className="balloon"
+>
+                      Name to display for this product in your extension.
+</div>,
+                  ],
+                  "className": "text-col balloon-wrapper",
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Product Name",
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Name to display for this product in your extension.",
+                      "className": "balloon",
+                    },
+                    "ref": null,
+                    "rendered": "Name to display for this product in your extension.",
+                    "type": "div",
+                  },
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "SKU",
+                    <div
+                      className="balloon"
+>
+                      Unique SKU to identify this product. Cannot be changed after saving. Must not contain whitespace.
+</div>,
+                  ],
+                  "className": "text-col balloon-wrapper",
+                },
+                "ref": null,
+                "rendered": Array [
+                  "SKU",
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Unique SKU to identify this product. Cannot be changed after saving. Must not contain whitespace.",
+                      "className": "balloon",
+                    },
+                    "ref": null,
+                    "rendered": "Unique SKU to identify this product. Cannot be changed after saving. Must not contain whitespace.",
+                    "type": "div",
+                  },
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Amount (in Bits)",
+                    <div
+                      className="balloon"
+>
+                      Amount of Bits to offer this product for. Must be between 1 and 10,000.
+</div>,
+                  ],
+                  "className": "text-col balloon-wrapper",
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Amount (in Bits)",
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Amount of Bits to offer this product for. Must be between 1 and 10,000.",
+                      "className": "balloon",
+                    },
+                    "ref": null,
+                    "rendered": "Amount of Bits to offer this product for. Must be between 1 and 10,000.",
+                    "type": "div",
+                  },
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "In Development",
+                    <div
+                      className="balloon"
+>
+                      Setting this to yes will cause this product to not be displayed in a released extension.
+</div>,
+                  ],
+                  "className": "select-col balloon-wrapper",
+                },
+                "ref": null,
+                "rendered": Array [
+                  "In Development",
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Setting this to yes will cause this product to not be displayed in a released extension.",
+                      "className": "balloon",
+                    },
+                    "ref": null,
+                    "rendered": "Setting this to yes will cause this product to not be displayed in a released extension.",
+                    "type": "div",
+                  },
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Broadcast",
+                    <div
+                      className="balloon"
+>
+                      Setting this to yes will notify all instances of your extension on a channel when a transaction for this product has completed.
+</div>,
+                  ],
+                  "className": "select-col balloon-wrapper",
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Broadcast",
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Setting this to yes will notify all instances of your extension on a channel when a transaction for this product has completed.",
+                      "className": "balloon",
+                    },
+                    "ref": null,
+                    "rendered": "Setting this to yes will notify all instances of your extension on a channel when a transaction for this product has completed.",
+                    "type": "div",
+                  },
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "className": "button-col",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "className": "dirty-col",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "div",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "0",
+            "nodeType": "function",
+            "props": Object {
+              "handleDeprecateClick": [Function],
+              "handleValueChange": [Function],
+              "product": Object {
+                "amount": 100,
+                "broadcast": "false",
+                "deprecated": false,
+                "dirty": false,
+                "displayName": "Test Product 1",
+                "inDevelopment": "false",
+                "savedInCatalog": true,
+                "sku": "testSku1",
+                "validationErrors": Object {},
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "1",
+            "nodeType": "function",
+            "props": Object {
+              "handleDeprecateClick": [Function],
+              "handleValueChange": [Function],
+              "product": Object {
+                "amount": 500,
+                "broadcast": "false",
+                "deprecated": false,
+                "dirty": false,
+                "displayName": "Test Product 2",
+                "inDevelopment": "true",
+                "savedInCatalog": true,
+                "sku": "testSku2",
+                "validationErrors": Object {},
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+      false,
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <button
+              className="product-table__add-button"
+              disabled={false}
+              onClick={[Function]}
+>
+              Add Product
+</button>,
+            <button
+              className="product-table__save-button"
+              disabled={false}
+              onClick={[Function]}
+>
+              Save All
+</button>,
+          ],
+          "className": "product-table__buttons",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Add Product",
+              "className": "product-table__add-button",
+              "disabled": false,
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": "Add Product",
+            "type": "button",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Save All",
+              "className": "product-table__save-button",
+              "disabled": false,
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": "Save All",
+            "type": "button",
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          "",
+          <div>
+            <div
+                        className="product-table__category"
+            >
+                        Live
+            </div>
+            <div
+                        className="product-table__header"
+            >
+                        <div
+                                    className="text-col balloon-wrapper"
+                        >
+                                    Product Name
+                                    <div
+                                                className="balloon"
+                                    >
+                                                Name to display for this product in your extension.
+                                    </div>
+                        </div>
+                        <div
+                                    className="text-col balloon-wrapper"
+                        >
+                                    SKU
+                                    <div
+                                                className="balloon"
+                                    >
+                                                Unique SKU to identify this product. Cannot be changed after saving. Must not contain whitespace.
+                                    </div>
+                        </div>
+                        <div
+                                    className="text-col balloon-wrapper"
+                        >
+                                    Amount (in Bits)
+                                    <div
+                                                className="balloon"
+                                    >
+                                                Amount of Bits to offer this product for. Must be between 1 and 10,000.
+                                    </div>
+                        </div>
+                        <div
+                                    className="select-col balloon-wrapper"
+                        >
+                                    In Development
+                                    <div
+                                                className="balloon"
+                                    >
+                                                Setting this to yes will cause this product to not be displayed in a released extension.
+                                    </div>
+                        </div>
+                        <div
+                                    className="select-col balloon-wrapper"
+                        >
+                                    Broadcast
+                                    <div
+                                                className="balloon"
+                                    >
+                                                Setting this to yes will notify all instances of your extension on a channel when a transaction for this product has completed.
+                                    </div>
+                        </div>
+                        <div
+                                    className="button-col"
+                        />
+                        <div
+                                    className="dirty-col"
+                        />
+            </div>
+            <Unknown
+                        handleDeprecateClick={[Function]}
+                        handleValueChange={[Function]}
+                        product={
+                                    Object {
+                                                "amount": 100,
+                                                "broadcast": "false",
+                                                "deprecated": false,
+                                                "dirty": false,
+                                                "displayName": "Test Product 1",
+                                                "inDevelopment": "false",
+                                                "savedInCatalog": true,
+                                                "sku": "testSku1",
+                                                "validationErrors": Object {},
+                                              }
+                        }
+            />
+            <Unknown
+                        handleDeprecateClick={[Function]}
+                        handleValueChange={[Function]}
+                        product={
+                                    Object {
+                                                "amount": 500,
+                                                "broadcast": "false",
+                                                "deprecated": false,
+                                                "dirty": false,
+                                                "displayName": "Test Product 2",
+                                                "inDevelopment": "true",
+                                                "savedInCatalog": true,
+                                                "sku": "testSku2",
+                                                "validationErrors": Object {},
+                                              }
+                        }
+            />
+</div>,
+          false,
+          <div
+            className="product-table__buttons"
+>
+            <button
+                        className="product-table__add-button"
+                        disabled={false}
+                        onClick={[Function]}
+            >
+                        Add Product
+            </button>
+            <button
+                        className="product-table__save-button"
+                        disabled={false}
+                        onClick={[Function]}
+            >
+                        Save All
+            </button>
+</div>,
+        ],
+        "className": "product-table",
+      },
+      "ref": null,
+      "rendered": Array [
+        "",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div
+                className="product-table__category"
+>
+                Live
+</div>,
+              <div
+                className="product-table__header"
+>
+                <div
+                                className="text-col balloon-wrapper"
+                >
+                                Product Name
+                                <div
+                                                className="balloon"
+                                >
+                                                Name to display for this product in your extension.
+                                </div>
+                </div>
+                <div
+                                className="text-col balloon-wrapper"
+                >
+                                SKU
+                                <div
+                                                className="balloon"
+                                >
+                                                Unique SKU to identify this product. Cannot be changed after saving. Must not contain whitespace.
+                                </div>
+                </div>
+                <div
+                                className="text-col balloon-wrapper"
+                >
+                                Amount (in Bits)
+                                <div
+                                                className="balloon"
+                                >
+                                                Amount of Bits to offer this product for. Must be between 1 and 10,000.
+                                </div>
+                </div>
+                <div
+                                className="select-col balloon-wrapper"
+                >
+                                In Development
+                                <div
+                                                className="balloon"
+                                >
+                                                Setting this to yes will cause this product to not be displayed in a released extension.
+                                </div>
+                </div>
+                <div
+                                className="select-col balloon-wrapper"
+                >
+                                Broadcast
+                                <div
+                                                className="balloon"
+                                >
+                                                Setting this to yes will notify all instances of your extension on a channel when a transaction for this product has completed.
+                                </div>
+                </div>
+                <div
+                                className="button-col"
+                />
+                <div
+                                className="dirty-col"
+                />
+</div>,
+              Array [
+                <Unknown
+                  handleDeprecateClick={[Function]}
+                  handleValueChange={[Function]}
+                  product={
+                                    Object {
+                                                      "amount": 100,
+                                                      "broadcast": "false",
+                                                      "deprecated": false,
+                                                      "dirty": false,
+                                                      "displayName": "Test Product 1",
+                                                      "inDevelopment": "false",
+                                                      "savedInCatalog": true,
+                                                      "sku": "testSku1",
+                                                      "validationErrors": Object {},
+                                                    }
+                  }
+/>,
+                <Unknown
+                  handleDeprecateClick={[Function]}
+                  handleValueChange={[Function]}
+                  product={
+                                    Object {
+                                                      "amount": 500,
+                                                      "broadcast": "false",
+                                                      "deprecated": false,
+                                                      "dirty": false,
+                                                      "displayName": "Test Product 2",
+                                                      "inDevelopment": "true",
+                                                      "savedInCatalog": true,
+                                                      "sku": "testSku2",
+                                                      "validationErrors": Object {},
+                                                    }
+                  }
+/>,
+              ],
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Live",
+                "className": "product-table__category",
+              },
+              "ref": null,
+              "rendered": "Live",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <div
+                    className="text-col balloon-wrapper"
+>
+                    Product Name
+                    <div
+                                        className="balloon"
+                    >
+                                        Name to display for this product in your extension.
+                    </div>
+</div>,
+                  <div
+                    className="text-col balloon-wrapper"
+>
+                    SKU
+                    <div
+                                        className="balloon"
+                    >
+                                        Unique SKU to identify this product. Cannot be changed after saving. Must not contain whitespace.
+                    </div>
+</div>,
+                  <div
+                    className="text-col balloon-wrapper"
+>
+                    Amount (in Bits)
+                    <div
+                                        className="balloon"
+                    >
+                                        Amount of Bits to offer this product for. Must be between 1 and 10,000.
+                    </div>
+</div>,
+                  <div
+                    className="select-col balloon-wrapper"
+>
+                    In Development
+                    <div
+                                        className="balloon"
+                    >
+                                        Setting this to yes will cause this product to not be displayed in a released extension.
+                    </div>
+</div>,
+                  <div
+                    className="select-col balloon-wrapper"
+>
+                    Broadcast
+                    <div
+                                        className="balloon"
+                    >
+                                        Setting this to yes will notify all instances of your extension on a channel when a transaction for this product has completed.
+                    </div>
+</div>,
+                  <div
+                    className="button-col"
+/>,
+                  <div
+                    className="dirty-col"
+/>,
+                ],
+                "className": "product-table__header",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      "Product Name",
+                      <div
+                        className="balloon"
+>
+                        Name to display for this product in your extension.
+</div>,
+                    ],
+                    "className": "text-col balloon-wrapper",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "Product Name",
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Name to display for this product in your extension.",
+                        "className": "balloon",
+                      },
+                      "ref": null,
+                      "rendered": "Name to display for this product in your extension.",
+                      "type": "div",
+                    },
+                  ],
+                  "type": "div",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      "SKU",
+                      <div
+                        className="balloon"
+>
+                        Unique SKU to identify this product. Cannot be changed after saving. Must not contain whitespace.
+</div>,
+                    ],
+                    "className": "text-col balloon-wrapper",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "SKU",
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Unique SKU to identify this product. Cannot be changed after saving. Must not contain whitespace.",
+                        "className": "balloon",
+                      },
+                      "ref": null,
+                      "rendered": "Unique SKU to identify this product. Cannot be changed after saving. Must not contain whitespace.",
+                      "type": "div",
+                    },
+                  ],
+                  "type": "div",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      "Amount (in Bits)",
+                      <div
+                        className="balloon"
+>
+                        Amount of Bits to offer this product for. Must be between 1 and 10,000.
+</div>,
+                    ],
+                    "className": "text-col balloon-wrapper",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "Amount (in Bits)",
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Amount of Bits to offer this product for. Must be between 1 and 10,000.",
+                        "className": "balloon",
+                      },
+                      "ref": null,
+                      "rendered": "Amount of Bits to offer this product for. Must be between 1 and 10,000.",
+                      "type": "div",
+                    },
+                  ],
+                  "type": "div",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      "In Development",
+                      <div
+                        className="balloon"
+>
+                        Setting this to yes will cause this product to not be displayed in a released extension.
+</div>,
+                    ],
+                    "className": "select-col balloon-wrapper",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "In Development",
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Setting this to yes will cause this product to not be displayed in a released extension.",
+                        "className": "balloon",
+                      },
+                      "ref": null,
+                      "rendered": "Setting this to yes will cause this product to not be displayed in a released extension.",
+                      "type": "div",
+                    },
+                  ],
+                  "type": "div",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      "Broadcast",
+                      <div
+                        className="balloon"
+>
+                        Setting this to yes will notify all instances of your extension on a channel when a transaction for this product has completed.
+</div>,
+                    ],
+                    "className": "select-col balloon-wrapper",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "Broadcast",
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Setting this to yes will notify all instances of your extension on a channel when a transaction for this product has completed.",
+                        "className": "balloon",
+                      },
+                      "ref": null,
+                      "rendered": "Setting this to yes will notify all instances of your extension on a channel when a transaction for this product has completed.",
+                      "type": "div",
+                    },
+                  ],
+                  "type": "div",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "className": "button-col",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "div",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "className": "dirty-col",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "div",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "0",
+              "nodeType": "function",
+              "props": Object {
+                "handleDeprecateClick": [Function],
+                "handleValueChange": [Function],
+                "product": Object {
+                  "amount": 100,
+                  "broadcast": "false",
+                  "deprecated": false,
+                  "dirty": false,
+                  "displayName": "Test Product 1",
+                  "inDevelopment": "false",
+                  "savedInCatalog": true,
+                  "sku": "testSku1",
+                  "validationErrors": Object {},
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "1",
+              "nodeType": "function",
+              "props": Object {
+                "handleDeprecateClick": [Function],
+                "handleValueChange": [Function],
+                "product": Object {
+                  "amount": 500,
+                  "broadcast": "false",
+                  "deprecated": false,
+                  "dirty": false,
+                  "displayName": "Test Product 2",
+                  "inDevelopment": "true",
+                  "savedInCatalog": true,
+                  "sku": "testSku2",
+                  "validationErrors": Object {},
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+        false,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <button
+                className="product-table__add-button"
+                disabled={false}
+                onClick={[Function]}
+>
+                Add Product
+</button>,
+              <button
+                className="product-table__save-button"
+                disabled={false}
+                onClick={[Function]}
+>
+                Save All
+</button>,
+            ],
+            "className": "product-table__buttons",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Add Product",
+                "className": "product-table__add-button",
+                "disabled": false,
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": "Add Product",
+              "type": "button",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Save All",
+                "className": "product-table__save-button",
+                "disabled": false,
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": "Save All",
+              "type": "button",
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
