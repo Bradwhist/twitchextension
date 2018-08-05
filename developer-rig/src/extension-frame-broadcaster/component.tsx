@@ -37,6 +37,8 @@ interface StateProps {
   playing: any;
   startTime: number;
   clicked: boolean;
+  transform: number;
+  trivia: boolean;
 }
 
 type State = StateProps;
@@ -53,30 +55,48 @@ export class BroadcasterFrame extends React.Component<Props, State> {
     totalContributions: this.props.totalContributions,
     loading: false,
     recent: [],
-    current: {title: 'love', artist: 'manny', duration: '120'},
+    current: {title: 'Title',
+              artist: 'Artist',
+              duration: 0,
+              trackId: 0
+    },
     startTime: 0,
     playing: new Audio('https://stream.svc.7digital.net/stream/catalogue?oauth_consumer_key=7d4vr6cgb392&oauth_nonce=197584571&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1533478724&oauth_version=1.0&shopId=2020&trackId=4641958&oauth_signature=qdv%2Bgw7bcSxVgdcJ1tKYdIz4LkE%3D'),
     clicked: false,
+    transform: -50,
+    trivia: true
   }
-
-  // public iframe: HTMLIFrameElement;
 
   public componentDidMount(){
     axios.get(PROXY + `/jukebox/${this.state.jukeboxId}`)
-      .then(res => {
-        console.log('res', res);
-        this.setState({
+      .then(async res => {
+        // console.log('res', res);
+        const totalContributions = res.data.totalContributions;
+        const queue = res.data.tracks;
+        await this.setState({
           totalContributions: res.data.totalContributions,
           queue: res.data.tracks
         })
+        console.log(this.state.queue);
+        await this.nextTrack();
+        console.log(this.state.current);
+        this.startTimeout();
       })
-    this.state.playing.play();
-    this.startTimeout();
   }
 
   private startTimeout = () => {
-    setInterval(this.incrementTime, 1000);
-    // setInterval(this.nextTrack, 5000);
+    console.log('current', this.state.current);
+    if (Object.keys(this.state.queue).length > 0 ){
+      const temp = this.state.queue.slice().shift();
+      const current = Object.assign(temp);
+      console.log(current.duration);
+      // const duration = temp.duration*1000;
+      // console.log(duration);
+      setInterval(this.incrementTime, 1000);
+      setInterval(this.nextTrack, 10000);
+    } else {
+      setInterval(this.startTimeout, 3000)
+    }
   }
 
   private incrementTime = () => {
@@ -157,7 +177,12 @@ export class BroadcasterFrame extends React.Component<Props, State> {
 
   private select = (song: any) => {
     this.setState({
-      select: {title: song.title, artist: song.artist, id: song.id}
+      select: { title: song.title,
+                artist: song.artist,
+                id: song.id,
+                duration: song.duration,
+                image: song.image,
+             }
     })
   }
 
@@ -169,7 +194,6 @@ export class BroadcasterFrame extends React.Component<Props, State> {
                                                "5b67122eea52308b0ac53523",
                                                this.state.select.duration,
                                                this.state.select.image,
-                                               this.state.casterId,
                                              );
     await this.setState({
       queue: returned.queue,
@@ -182,22 +206,22 @@ export class BroadcasterFrame extends React.Component<Props, State> {
   }
 
   private renderSearchResults = () =>{
-    let view = (<div className="search-container">search for music!</div>);
+    let view = (<div className="search-container" style={{border: "0.5px solid gray"}}>search for music!</div>);
     if (this.state.searchResults.length!==0 && this.state.searched){
       view = (
-        <div className="search-container">
+        <div className="search-container" style={{border: "0.5px solid gray"}}>
           {this.state.searchResults.map(this.resultItem)}
         </div>
       )
     } else if (this.state.searchResults.length === 0 && this.state.searched){
       view = (
-        <div className="search-container">
+        <div className="search-container" style={{border: "0.5px solid gray"}}>
           <span>No music found :(</span>
         </div>
       )
     } else if (this.state.loading) {
       view = (
-        <div className="search-container">
+        <div className="search-container" style={{border: "0.5px solid gray"}}>
           <span>loading... loading...</span>
         </div>
       )
@@ -244,17 +268,19 @@ export class BroadcasterFrame extends React.Component<Props, State> {
 
   private nextTrack = () => {
     console.log('next track');
-
     this.setState({ startTime: 0})
+    this.state.playing.pause();
 
     if (Object.keys(this.state.queue).length > 0 ){
-      const body = {jukeboxId: this.state.jukeboxId};
-
+      const body = {id: this.state.jukeboxId};
+      console.log(body);
       axios.delete(PROXY+`/jukebox`, {data: body})
         .then((resp: any) => {
-          console.log(resp);
-          const queue = resp.data;
-          this.setState({ queue })
+          const queue = resp.data.tracks;
+          const current = resp.data.deleted;
+          const playing = new Audio(this.generateStream(parseInt(current.trackId)));
+          this.setState({ queue, current, playing })
+          this.state.playing.play()
         })
     }
   }
@@ -263,28 +289,89 @@ export class BroadcasterFrame extends React.Component<Props, State> {
     return Math.floor(value / 60) + ":" + (value % 60 ? value % 60 : '00')
   }
 
-  // private queueListClicked = () => {
-  //   this.setState({
-  //      clicked: true
-  //    })
-  // }
+  private generateStream = (trackId: number) => {
+    var api = require('7digital-api').configure({
+        consumerkey: '7d4vr6cgb392',
+        consumersecret: 'm4ntskavq56rddsa',
+    });
+    var oauth = new api.OAuth();
+    var previewUrl = oauth.sign('http://previews.7digital.com/clip/12345');
+    var signedUrl = oauth.sign('https://stream.svc.7digital.net/stream/catalogue', {
+        trackId: trackId,
+        shopId: 2020,
+    });
+    return signedUrl;
+  }
+
+  private queueListClicked = () => {
+    this.setState({
+       clicked: true,
+       transform: 200
+     })
+  }
+
+  private radioBtnClicked = () => {
+    axios.post(PROXY+'/jukebox/answerTrivia', {jukeboxId: this.state.jukeboxId, userId: this.state.casterId})
+      .then(res => {
+        console.log(res)
+        this.setState({
+          trivia: false
+        })
+      })
+
+  }
+
 
   public render() {
-    return (
-      <div className="main-container">
+    const styles = {
+      transform: `translateY(${this.state.transform}px)`
+    }
 
-        <h1>BROADCASTER VIEW</h1>
-        <h4>Twitch Jukebox</h4>
+    const buttonStyle ={
+      height: "30px",
+      padding: "5px"
+    }
+
+    return (
+      <div>
+      {/* <div className="main-container">
+        {this.state.trivia ?
+          <div className="card">
+            <h5 className="card-header info-color white-text text-center py-4">
+              <strong>Trivia</strong>
+            </h5>
+            <div className="card-body px-lg-5 text-center">
+                <p>Who is my favorite champion?</p>
+                <div className="radio">
+                  <label><input type="radio" name="optradio" checked/>Akali</label>
+                </div>
+                <div className="radio">
+                  <label><input type="radio" name="optradio"/>Ahri</label>
+                </div>
+                <div className="radio">
+                  <label><input type="radio" name="optradio"/>Bard</label>
+                </div>
+                <div className="radio">
+                  <label><input type="radio" name="optradio"/>Teemo</label>
+                </div>
+              <div className = "text-center">
+                <button onClick = {() => this.radioBtnClicked()} className="btn btn-outline-info btn-rounded z-depth-0 my-4 waves-effect" type="submit" style = 'width: 20%'>Submit</button>
+              </div>
+            </div>
+          </div> : null}
+          </div> */}
+        <h1>Twitch Jukebox</h1>
         <h3>Total contributions: ${this.state.totalContributions}</h3>
 
         <div className="search-div">
           <div className="search-selection">
             <div className="search-controls">
               <input placeholder="Search for music"
+                     style = {{height: "30px", width: "300px", padding: "5px"}}
                      value = {this.state.searchInput}
-                     onChange={(e)=>this.setState({ searchInput: e.target.value })}/>
-              <button onClick={this.artistSearch}>Artist Search</button>
-              <button onClick={this.songSearch}>Song Search</button>
+                     onChange={(e)=>this.setState({ searchInput: e.target.value })}/><br/>
+              <button style={buttonStyle} onClick={this.artistSearch}>Artist Search</button>
+              <button style={buttonStyle} onClick={this.songSearch}>Song Search</button>
             </div>
             <div>Current song selection:
               {this.renderCurrentSong()}
@@ -297,47 +384,9 @@ export class BroadcasterFrame extends React.Component<Props, State> {
         </div>
 
         <div className="music-container">
-          <div className="queue-results">Queue:
-            <div className="queue-container">
-              {this.state.queue.map(this.queueItem)}
-            </div>
-          </div>
-          <div className="recent-results">Recently played:
-            <div className="recent-container">
-              {this.state.recent.map(this.resultItem)}
-            </div>
-          </div>
-        </div>
-        {/* Object.keys(this.state.current).length > 0 */}
-        {this.state.current
-         ? <div id="player">
-            <div className="album">
-              <div className="heart"><i className="fas fa-heart"></i></div>
-            </div>
-            <div className="info">
-              <div className="progress-bar">
-                <div className="time--current">{this.convertTime(this.state.startTime)}</div>
-                <div className="time--total">{this.convertTime(parseInt(this.state.current.duration))}</div>
-                <div className="fill"></div>
-              </div>
-              <div className="currently-playing">
-                <h2 className="song-name">{this.state.current.title}</h2>
-                <h3 className="artist-name">{this.state.current.artist}</h3>
-              </div>
-              <div className="controls">
-                {/* <div className="option" onClick = {() => this.queueListClicked()}><i className="fas fa-bars"></i></div> */}
-                <div className="volume"><i className="fas fa-volume-up"></i></div>
-                <div className="previous"><i className="fas fa-backward"></i></div>
-                <div className="play" onClick={()=> this.state.playing.play()}><i className="fas fa-play"></i></div>
-                <div className="pause" onClick={() => this.state.playing.pause()}><i className="fas fa-pause"></i></div>
-                <div className="next"><i className="fas fa-forward"></i></div>
-                <div className="shuffle"><i className="fas fa-random"></i></div>
-                <div className="add"><i className="fas fa-plus"></i></div>
-              </div>
-            </div>
-          </div> : null}
-          {/* : this.state.clicked ? <div><div id="player">
-             <div className="album">
+          <div id="player-container">
+          <div id="player">
+             <div className="album" style={{background: `linear-gradient(rgba($dark, 0.25), rgba($primary, 0.55)), url(${this.state.current.image})`}}>
                <div className="heart"><i className="fas fa-heart"></i></div>
              </div>
              <div className="info">
@@ -353,23 +402,25 @@ export class BroadcasterFrame extends React.Component<Props, State> {
                <div className="controls">
                  <div className="option" onClick = {() => this.queueListClicked()}><i className="fas fa-bars"></i></div>
                  <div className="volume"><i className="fas fa-volume-up"></i></div>
-                 <div className="previous"><i className="fas fa-backward"></i></div>
                  <div className="play" onClick={()=> this.state.playing.play()}><i className="fas fa-play"></i></div>
                  <div className="pause" onClick={() => this.state.playing.pause()}><i className="fas fa-pause"></i></div>
-                 <div className="next"><i className="fas fa-forward"></i></div>
                  <div className="shuffle"><i className="fas fa-random"></i></div>
                  <div className="add"><i className="fas fa-plus"></i></div>
                </div>
              </div>
+             </div>
            </div>
-           {this.state.queue.map((track, index) => <div className="queueTrack">
-             <p key = {index}>{index}</p>
-             <h2 className="song-name">{track.artist}</h2>
-             <h3 className="artist-name">{track.title}</h3>
-           </div>)}
-         </div> : null */}
-
-
+          <div className="queue-results" style={{marginTop:"25px"}}>Queue:
+            <div className="queue-container" style={{border: "none", marginTop:"25px"}}>
+              {this.state.queue.map((track:any, index:number) =>
+                <div className="queueTrack" style = {styles}>
+                  <p key = {index + 1}>{index + 1}</p>
+                  <h2 className="song-name">{track.title}</h2>
+                  <h3 className="artist-name">{track.artist}</h3>
+                </div>)}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

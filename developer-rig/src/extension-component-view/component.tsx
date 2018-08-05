@@ -29,26 +29,6 @@ type State = StateProps;
 
 type Props = ExtensionComponentViewProps & React.HTMLAttributes<HTMLDivElement>;
 
-// export function request(artist:string, title:string, trackId:string, jukeboxId:string, duration:number){
-//   const body = {
-//     artist: artist,
-//     title: title,
-//     trackId: trackId,
-//     casterId: jukeboxId,
-//     userId: "5b67122eea52308b0ac53523",
-//     duration: duration
-//   }
-//
-//   axios.post(PROXY+`/jukebox`, body)
-//     .then(resp => {
-//       // console.log('resp', resp)
-//       const queue = resp.data.tracks;
-//       console.log(queue);
-//       const totalContributions = resp.data.totalContributions;
-//       return {queue, totalContributions}
-//     })
-// }
-
 export class ExtensionComponentView extends React.Component<Props, State> {
   public state: State = {
     queue: [],
@@ -139,9 +119,9 @@ export class ExtensionComponentView extends React.Component<Props, State> {
   }
 
   private request = async (artist:string, title:string, trackId:string,
-      jukeboxId:string, userId:string,duration:number, image:string, casterId: string) => {
+      jukeboxId:string, userId:string,duration:number, image:string) => {
     console.log('requesting in parent')
-    const body = { artist, title, trackId, jukeboxId, userId, duration, image, casterId }
+    const body = { artist, title, trackId, jukeboxId, userId, duration, image }
 
     await axios.post(PROXY+`/jukebox`, body)
       .then(async resp => {

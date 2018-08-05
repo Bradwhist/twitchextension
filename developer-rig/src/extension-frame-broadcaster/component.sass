@@ -9,21 +9,19 @@
 .music-container
   display: flex
   margin-top: 10px
+  margin-left: -50px
 
 .queue-container
-  width: 400px
-  height: 300px
-  border: 1px solid black
   margin-top: 5px
   padding: 5px
 
 .queue-results
-  margin: 5px
+  margin-left: 50px
+  margin-top: 5px
 
 .recent-container
   width: 400px
   height: 300px
-  border: 1px solid black
   margin-top: 5px
   padding: 5px
 
@@ -41,24 +39,23 @@
 
 .search-controls
   margin-bottom: 15px
+  margin-right: -50px
 
 .search-selection
   display: flex
   flex-direction: column
   margin-left: 5px
-  width: 400px
+  margin-right: -100px
+  width: 200px
 
 .search-results
-  margin-left: 55px
   padding-top: 5px
-  // border: 1px solid black
 
 .search-container
-  border: 1px solid black
   padding: 10px
 
 input
-  height: 20px
+  height: 100px
   border-radius: 5px
 
 button
@@ -93,12 +90,16 @@ body
   border-radius: 5px
   box-shadow: 5px 5px 15px rgba($dark, .4)
   -webkit-transition: all .5s ease-in-out
-  transition:all .5s ease-in-out
+  transition: all .5s ease-in-out
   &:hover
     transform: scale(1.05)
 
+#player-container
+  margin-left: 50px
+  margin-top: 35px
+  margin-right: 50px
+
 .album
-  background: linear-gradient(rgba($dark, 0.25), rgba($primary, 0.55)),        url('http://4.bp.blogspot.com/-pcPjBBdE_K8/U7v4oEX3M8I/AAAAAAAAD2I/6dWyzgiPzkQ/s1600/Clean+BAndit+Album+.jpg')
   background-repeat: no-repeat
   background-size: 300px
   width: 100%
@@ -126,9 +127,9 @@ body
   background: rgba($white, .85)
   transform: translateY(35px)
   transition: all .5s ease-in-out
+  &:hover
+    transform: scale(1.05)
 
-.up
-  transform: translateY(0px)
 
 .progress-bar
   height: 5px
@@ -137,6 +138,15 @@ body
   background: lighten($light, 5%)
   border-radius: 10px
   font-family: $font
+
+.queueTrack
+  width: 100%
+  opacity: 0.85
+  margin-top: 5%
+  padding-top: 2%
+  padding-bottom: 2%
+  text-align: center
+  background: rgba($white, .85)
 
 .fill
   background-color: $secondary
@@ -210,20 +220,3 @@ body
   transition: all .5s ease
   &:hover
     color: lighten($dark, 15%)
-
-footer
-  position: absolute
-  bottom: 0
-  right: 0
-  text-align: center
-  font-size: 0.5em
-  text-transform: uppercase
-  padding: 10px
-  color: $primary
-  letter-spacing: 3px
-  font-family: $font
-  a
-    color: #ffffff
-    text-decoration: none
-    &:hover
-      color: $primary
