@@ -1,7 +1,10 @@
 import * as React from 'react';
 import './component.sass';
 import * as classNames from 'classnames';
-import { ExtensionFrame } from '../extension-frame';
+// import { ExtensionFrame } from '../extension-frame';
+import { BroadcasterFrame } from '../extension-frame-broadcaster';
+import { LoggedInViewerFrame } from '../extension-frame-loggedinviewer';
+import { LoggedOutViewerFrame } from '../extension-frame-loggedoutviewer';
 // import { LoggedInViewerFrame } from '../extension-frame-loggedinviewer';
 import { IdentityOptions } from '../constants/identity-options';
 import { ViewerTypes } from '../constants/viewer-types';
@@ -43,6 +46,9 @@ interface ExtensionViewProps {
   openEditViewHandler?: (id: string) => void;
   position?: Position;
   frameSize?: FrameSize;
+  request: any;
+  queue: Array<Object>;
+  totalContributions: number;
 }
 
 interface State {
@@ -85,44 +91,81 @@ export class ExtensionViewComponent extends React.Component<Props, State> {
 
   public renderView(extensionProps: ExtensionProps) {
     let view = null;
-    switch (this.props.type) {
-      case ExtensionAnchor.Component:
-        view = (<ExtensionComponentView
-          bindIframeToParent={this.bindIframeToParent}
-          id={`component-${this.props.id}`}
-          role={this.props.role}
-          className="view"
-          extension={this.props.extension}
-          frameSize={this.props.frameSize}
-          position={this.props.position}
-        />);
-        break;
-      case ExtensionViewType.Mobile:
-        view = (<ExtensionMobileView
-          bindIframeToParent={this.bindIframeToParent}
-          id={`mobile-${this.props.id}`}
-          className="view"
-          role={this.props.role}
-          extension={this.props.extension}
-          frameSize={this.props.frameSize}
-          position={this.props.position}
-          orientation={this.props.orientation}
-        />);
-        break;
-      default:
-        // standard view for overlays, panels, live config, and broadcaster config
-        view = (<div className="view" style={extensionProps.viewStyles}>
-          <ExtensionFrame
-            bindIframeToParent={this.bindIframeToParent}
+    if (this.props.role === "Broadcaster"){
+      view = (
+          <BroadcasterFrame
             className="view"
             frameId={`frameid-${this.props.id}`}
             extension={this.props.extension}
-            type={this.props.type}
-            mode={this.props.mode}
+            type={ExtensionViewType.Component}
+            mode={ExtensionMode.Viewer}
+            request={this.props.request}
+            queue={this.props.queue}
+            totalContributions={this.props.totalContributions}
           />
-        </div>);
-        break;
+      );
+    } else if (this.props.role === "Logged-In Viewer"){
+      view = (
+        <LoggedInViewerFrame
+          className="view"
+          frameId={`frameid-${this.props.id}`}
+          extension={this.props.extension}
+          type={ExtensionViewType.Component}
+          mode={ExtensionMode.Viewer}
+          request={this.props.request}
+          queue={this.props.queue}
+          totalContributions={this.props.totalContributions}
+        />
+      );
+    } else if (this.props.role === "Logged-Out Viewer"){
+      view = (
+        <LoggedOutViewerFrame
+          className="view"
+          frameId={`frameid-${this.props.id}`}
+          extension={this.props.extension}
+          type={ExtensionViewType.Component}
+          mode={ExtensionMode.Viewer}
+        />
+      );
     }
+    // switch (this.props.type) {
+    //   case ExtensionAnchor.Component:
+    //     view = (<ExtensionComponentView
+    //       bindIframeToParent={this.bindIframeToParent}
+    //       id={`component-${this.props.id}`}
+    //       role={this.props.role}
+    //       className="view"
+    //       extension={this.props.extension}
+    //       frameSize={this.props.frameSize}
+    //       position={this.props.position}
+    //     />);
+    //     break;
+    //   case ExtensionViewType.Mobile:
+    //     view = (<ExtensionMobileView
+    //       bindIframeToParent={this.bindIframeToParent}
+    //       id={`mobile-${this.props.id}`}
+    //       className="view"
+    //       role={this.props.role}
+    //       extension={this.props.extension}
+    //       frameSize={this.props.frameSize}
+    //       position={this.props.position}
+    //       orientation={this.props.orientation}
+    //     />);
+    //     break;
+    //   default:
+    //     // standard view for overlays, panels, live config, and broadcaster config
+    //     view = (<div className="view" style={extensionProps.viewStyles}>
+    //       <ExtensionFrame
+    //         bindIframeToParent={this.bindIframeToParent}
+    //         className="view"
+    //         frameId={`frameid-${this.props.id}`}
+    //         extension={this.props.extension}
+    //         type={this.props.type}
+    //         mode={this.props.mode}
+    //       />
+    //     </div>);
+    //     break;
+    // }
     return view;
   }
 

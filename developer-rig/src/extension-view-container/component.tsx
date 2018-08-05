@@ -4,6 +4,10 @@ import { ExtensionViewButton } from '../extension-view-button';
 import { ExtensionMode } from '../constants/extension-coordinator';
 import './component.sass';
 import { RigExtensionView, RigExtension } from '../core/models/rig';
+import axios from 'axios';
+
+const PROXY = 'https://outside-hacks-api.herokuapp.com/api';
+
 
 interface ExtensionViewContainerProps {
   mode: string;
@@ -16,9 +20,38 @@ interface ExtensionViewContainerProps {
 
 type Props = ExtensionViewContainerProps;
 
-export class ExtensionViewContainer extends React.Component<Props> {
+interface StateProps {
+  queue: Array<Object>;
+  totalContributions: number;
+}
+
+type State = StateProps;
+
+export class ExtensionViewContainer extends React.Component<Props, State> {
+  public state: State = {
+    queue: [],
+    totalContributions: 0,
+  }
+
   private openExtensionViewDialog = () => {
     this.props.openExtensionViewHandler();
+  }
+
+  private request = async (artist:string, title:string, trackId:string,
+      jukeboxId:string, userId:string,duration:number, image:string) => {
+    console.log('requesting in parent')
+    const body = { artist, title, trackId, jukeboxId, userId, duration, image }
+
+    await axios.post(PROXY+`/jukebox`, body)
+      .then(async resp => {
+        console.log(resp);
+        const queue = resp.data.tracks;
+        const totalContributions = resp.data.totalContributions;
+        await this.setState({ queue, totalContributions })
+        console.log('after', this.state.queue, this.state.totalContributions)
+      })
+
+    return { queue: this.state.queue, totalContributions: this.state.totalContributions}
   }
 
   public render() {
@@ -29,7 +62,11 @@ export class ExtensionViewContainer extends React.Component<Props> {
         type={configType}
         extension={this.props.extension}
         mode={this.props.mode}
-        key={this.props.mode}/>
+        key={this.props.mode}
+        request={this.request}
+        queue={this.state.queue}
+        totalContributions={this.state.totalContributions}
+      />
       );
     }
 
@@ -48,7 +85,11 @@ export class ExtensionViewContainer extends React.Component<Props> {
           linked={view.linked}
           orientation={view.orientation}
           openEditViewHandler={this.props.openEditViewHandler}
-          deleteViewHandler={this.props.deleteExtensionViewHandler}/>
+          deleteViewHandler={this.props.deleteExtensionViewHandler}
+          request={this.request}
+          queue={this.state.queue}
+          totalContributions={this.state.totalContributions}
+        />
       });
     }
 

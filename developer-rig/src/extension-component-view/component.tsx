@@ -9,6 +9,8 @@ import { ExtensionMode, ExtensionViewType } from '../constants/extension-coordin
 const { getComponentPositionFromView, getComponentSizeFromView } = window['extension-coordinator'];
 import axios from 'axios';
 
+const PROXY = 'https://outside-hacks-api.herokuapp.com/api';
+
 interface ExtensionComponentViewProps {
   id: string
   extension: RigExtension;
@@ -18,9 +20,46 @@ interface ExtensionComponentViewProps {
   bindIframeToParent: (iframe: HTMLIFrameElement) => void;
 }
 
+interface StateProps {
+  queue: Array<Object>;
+  totalContributions: number;
+}
+
+type State = StateProps;
+
 type Props = ExtensionComponentViewProps & React.HTMLAttributes<HTMLDivElement>;
 
-export class ExtensionComponentView extends React.Component<Props> {
+// export function request(artist:string, title:string, trackId:string, jukeboxId:string, duration:number){
+//   const body = {
+//     artist: artist,
+//     title: title,
+//     trackId: trackId,
+//     casterId: jukeboxId,
+//     userId: "5b67122eea52308b0ac53523",
+//     duration: duration
+//   }
+//
+//   axios.post(PROXY+`/jukebox`, body)
+//     .then(resp => {
+//       // console.log('resp', resp)
+//       const queue = resp.data.tracks;
+//       console.log(queue);
+//       const totalContributions = resp.data.totalContributions;
+//       return {queue, totalContributions}
+//     })
+// }
+
+export class ExtensionComponentView extends React.Component<Props, State> {
+  public state: State = {
+    queue: [],
+    totalContributions: 0,
+  }
+
+  public shouldComponentUpdate(){
+    return true;
+  }
+
+
   private computeViewStyles(): React.CSSProperties {
     const extension = this.props.extension;
     const positionFromView = getComponentPositionFromView(
@@ -57,37 +96,37 @@ export class ExtensionComponentView extends React.Component<Props> {
     return viewStyles;
   }
 
-
-// public
-
   private renderFrame(){
     let view = null;
     if (this.props.role === "Broadcaster"){
       view = (
           <BroadcasterFrame
-            bindIframeToParent={this.props.bindIframeToParent}
             className="view"
             frameId={`frameid-${this.props.id}`}
             extension={this.props.extension}
             type={ExtensionViewType.Component}
             mode={ExtensionMode.Viewer}
+            request={this.request}
+            queue={this.state.queue}
+            totalContributions={this.state.totalContributions}
           />
       );
     } else if (this.props.role === "Logged-In Viewer"){
       view = (
         <LoggedInViewerFrame
-          bindIframeToParent={this.props.bindIframeToParent}
           className="view"
           frameId={`frameid-${this.props.id}`}
           extension={this.props.extension}
           type={ExtensionViewType.Component}
           mode={ExtensionMode.Viewer}
+          request={this.request}
+          queue={this.state.queue}
+          totalContributions={this.state.totalContributions}
         />
       );
     } else if (this.props.role === "Logged-Out Viewer"){
       view = (
         <LoggedOutViewerFrame
-          bindIframeToParent={this.props.bindIframeToParent}
           className="view"
           frameId={`frameid-${this.props.id}`}
           extension={this.props.extension}
@@ -97,6 +136,23 @@ export class ExtensionComponentView extends React.Component<Props> {
       );
     }
     return view
+  }
+
+  private request = async (artist:string, title:string, trackId:string,
+      jukeboxId:string, userId:string,duration:number, image:string, casterId: string) => {
+    console.log('requesting in parent')
+    const body = { artist, title, trackId, jukeboxId, userId, duration, image, casterId }
+
+    await axios.post(PROXY+`/jukebox`, body)
+      .then(async resp => {
+        console.log(resp);
+        const queue = resp.data.tracks;
+        const totalContributions = resp.data.totalContributions;
+        await this.setState({ queue, totalContributions })
+        console.log('after', this.state.queue, this.state.totalContributions)
+      })
+
+    return { queue: this.state.queue, totalContributions: this.state.totalContributions}
   }
 
   public render() {
@@ -111,16 +167,6 @@ export class ExtensionComponentView extends React.Component<Props> {
           <div style={this.computeViewStyles()}>
             {this.renderFrame()}
           </div>
-          {/* <div style={this.computeViewStyles()}>
-            <ExtensionFrame
-              bindIframeToParent={this.props.bindIframeToParent}
-              className="view"
-              frameId={`frameid-${this.props.id}`}
-              extension={this.props.extension}
-              type={ExtensionViewType.Component}
-              mode={ExtensionMode.Viewer}
-            />
-          </div> */}
         </div>
       </div>
     );

@@ -12,7 +12,7 @@ interface LoggedOutViewerFrameProps {
   extension: RigExtension;
   type: string;
   mode: string;
-  bindIframeToParent: (iframe: HTMLIFrameElement) => void;
+  // bindIframeToParent: (iframe: HTMLIFrameElement) => void;
 }
 
 type Props = LoggedOutViewerFrameProps;
@@ -41,8 +41,8 @@ export class LoggedOutViewerFrame extends React.Component<Props> {
   }
 
   private bindIframeRef = (iframe: HTMLIFrameElement) => {
-    this.iframe = iframe;
-    this.props.bindIframeToParent(iframe);
+    // this.iframe = iframe;
+    // this.props.bindIframeToParent(iframe);
   }
 
   public loggedOutViewerFrameInit = () => {
