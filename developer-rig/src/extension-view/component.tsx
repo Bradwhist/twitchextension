@@ -2,6 +2,7 @@ import * as React from 'react';
 import './component.sass';
 import * as classNames from 'classnames';
 import { ExtensionFrame } from '../extension-frame';
+// import { LoggedInViewerFrame } from '../extension-frame-loggedinviewer';
 import { IdentityOptions } from '../constants/identity-options';
 import { ViewerTypes } from '../constants/viewer-types';
 import * as closeButton from '../img/close_icon.png';
@@ -110,9 +111,7 @@ export class ExtensionViewComponent extends React.Component<Props, State> {
         break;
       default:
         // standard view for overlays, panels, live config, and broadcaster config
-        view = (<div
-          className="view"
-          style={extensionProps.viewStyles}>
+        view = (<div className="view" style={extensionProps.viewStyles}>
           <ExtensionFrame
             bindIframeToParent={this.bindIframeToParent}
             className="view"
@@ -121,7 +120,7 @@ export class ExtensionViewComponent extends React.Component<Props, State> {
             type={this.props.type}
             mode={this.props.mode}
           />
-        </div>)
+        </div>);
         break;
     }
     return view;
@@ -179,6 +178,9 @@ export class ExtensionViewComponent extends React.Component<Props, State> {
       view__close_button: true,
       visible: this.state.mousedOver,
     });
+
+    // console.log('!!!role!!!', this.props.role);
+
     return (
       <div
         className={'view__wrapper'}

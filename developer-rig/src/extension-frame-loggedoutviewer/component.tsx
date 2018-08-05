@@ -6,7 +6,7 @@ import { ExtensionPlatform, ExtensionViewType} from '../constants/extension-coor
 const IFRAME_CLASS = 'extension-frame';
 const EXTENSION_FRAME_INIT_ACTION = 'extension-frame-init';
 
-interface ExtensionFrameProps {
+interface LoggedOutViewerFrameProps {
   className: string;
   frameId: string;
   extension: RigExtension;
@@ -15,21 +15,21 @@ interface ExtensionFrameProps {
   bindIframeToParent: (iframe: HTMLIFrameElement) => void;
 }
 
-type Props = ExtensionFrameProps;
+type Props = LoggedOutViewerFrameProps;
 
-export class ExtensionFrame extends React.Component<Props> {
+export class LoggedOutViewerFrame extends React.Component<Props> {
   public iframe: HTMLIFrameElement;
 
   public componentDidMount() {
     if (this.iframe) {
-      this.iframe.onload = this.extensionFrameInit;
+      this.iframe.onload = this.loggedOutViewerFrameInit;
     }
   }
 
   public render() {
     return (
       <div>
-        <h1>HELLOOOOOO TEAM</h1>
+        <h1>LOGGED OUT VIEWER VIEW</h1>
         {/* <iframe
         ref={this.bindIframeRef}
           src={process.env.PUBLIC_URL + '/extension-frame.html'}
@@ -45,7 +45,7 @@ export class ExtensionFrame extends React.Component<Props> {
     this.props.bindIframeToParent(iframe);
   }
 
-  public extensionFrameInit = () => {
+  public loggedOutViewerFrameInit = () => {
     const extension: any = {
       anchor: this.props.type,
       channelId: this.props.extension.channelId,

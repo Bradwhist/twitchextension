@@ -1,0 +1,48 @@
+{
+  "id": "u0000000000000000000127751918",
+  "state": "Testing",
+  "version": "0.0.1",
+  "anchor": "",
+  "panel_height": 0,
+  "author_name": "twitchrig",
+  "support_email": "support@localhost",
+  "name": "Hello World Panel Extension",
+  "description": "Description of extension 127751918.",
+  "summary": "Summary of extension 127751918.",
+  "viewer_url": "https://localhost.rig.twitch.tv:8080/video_overlay.html",
+  "viewer_urls": {
+    "video_overlay": "https://localhost.rig.twitch.tv:8080/video_overlay.html"
+  },
+  "views": {
+    "video_overlay": {
+      "viewer_url": "https://localhost.rig.twitch.tv:8080/video_overlay.html"
+    },
+    "config": {
+      "viewer_url": "https://localhost.rig.twitch.tv:8080/config.html"
+    },
+    "live_config": {
+      "viewer_url": "https://localhost.rig.twitch.tv:8080/live_config.html"
+    }
+  },
+  "config_url": "https://localhost.rig.twitch.tv:8080/config.html",
+  "live_config_url": "https://localhost.rig.twitch.tv:8080/live_config.html",
+  "icon_url": "https://media.forgecdn.net/avatars/158/128/636650453584584748.png",
+  "icon_urls": {
+    "100x100": "https://media.forgecdn.net/avatars/158/128/636650453584584748.png"
+  },
+  "screenshot_urls": [
+    "internal/screenshots/test_data.png"
+  ],
+  "asset_urls": null,
+  "installation_count": -42,
+  "can_install": true,
+  "whitelisted_panel_urls": [],
+  "whitelisted_config_urls": [],
+  "required_broadcaster_abilities": [],
+  "eula_tos_url": "",
+  "privacy_policy_url": "",
+  "request_identity_link": false,
+  "vendor_code": "",
+  "sku": "",
+  "bits_enabled": false
+}
