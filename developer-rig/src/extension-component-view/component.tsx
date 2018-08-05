@@ -1,9 +1,13 @@
 import * as React from 'react';
 import { ExtensionFrame } from '../extension-frame';
+import { BroadcasterFrame } from '../extension-frame-broadcaster';
+import { LoggedInViewerFrame } from '../extension-frame-loggedinviewer';
+import { LoggedOutViewerFrame } from '../extension-frame-loggedoutviewer';
 import { RigExtension, FrameSize } from '../core/models/rig';
 import { Position } from '../types/extension-coordinator';
 import { ExtensionMode, ExtensionViewType } from '../constants/extension-coordinator';
 const { getComponentPositionFromView, getComponentSizeFromView } = window['extension-coordinator'];
+import axios from 'axios';
 
 interface ExtensionComponentViewProps {
   id: string
@@ -53,16 +57,14 @@ export class ExtensionComponentView extends React.Component<Props> {
     return viewStyles;
   }
 
-  public render() {
-    return (
-      <div
-        className="view component-view"
-        style={{
-          width: this.props.frameSize.width + 'px',
-          height: this.props.frameSize.height + 'px',
-        }}>
-          <div style={this.computeViewStyles()}>
-          <ExtensionFrame
+
+// public
+
+  private renderFrame(){
+    let view = null;
+    if (this.props.role === "Broadcaster"){
+      view = (
+          <BroadcasterFrame
             bindIframeToParent={this.props.bindIframeToParent}
             className="view"
             frameId={`frameid-${this.props.id}`}
@@ -70,6 +72,55 @@ export class ExtensionComponentView extends React.Component<Props> {
             type={ExtensionViewType.Component}
             mode={ExtensionMode.Viewer}
           />
+      );
+    } else if (this.props.role === "Logged-In Viewer"){
+      view = (
+        <LoggedInViewerFrame
+          bindIframeToParent={this.props.bindIframeToParent}
+          className="view"
+          frameId={`frameid-${this.props.id}`}
+          extension={this.props.extension}
+          type={ExtensionViewType.Component}
+          mode={ExtensionMode.Viewer}
+        />
+      );
+    } else if (this.props.role === "Logged-Out Viewer"){
+      view = (
+        <LoggedOutViewerFrame
+          bindIframeToParent={this.props.bindIframeToParent}
+          className="view"
+          frameId={`frameid-${this.props.id}`}
+          extension={this.props.extension}
+          type={ExtensionViewType.Component}
+          mode={ExtensionMode.Viewer}
+        />
+      );
+    }
+    return view
+  }
+
+  public render() {
+    return (
+      <div>
+        <div
+          className="view component-view"
+          style={{
+            width: this.props.frameSize.width + 'px',
+            height: this.props.frameSize.height + 'px',
+          }}>
+          <div style={this.computeViewStyles()}>
+            {this.renderFrame()}
+          </div>
+          {/* <div style={this.computeViewStyles()}>
+            <ExtensionFrame
+              bindIframeToParent={this.props.bindIframeToParent}
+              className="view"
+              frameId={`frameid-${this.props.id}`}
+              extension={this.props.extension}
+              type={ExtensionViewType.Component}
+              mode={ExtensionMode.Viewer}
+            />
+          </div> */}
         </div>
       </div>
     );

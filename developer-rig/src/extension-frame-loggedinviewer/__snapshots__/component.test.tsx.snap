@@ -1,0 +1,595 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ExtensionFrame /> when in config mode renders correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ExtensionFrame
+    bindIframeToParent={[Function]}
+    extension={
+        Object {
+            "authorName": "test",
+            "bitsEnabled": false,
+            "channelId": "channelId",
+            "description": "description",
+            "iconUrl": "icon_url",
+            "id": "id",
+            "name": "name",
+            "requestIdentityLink": false,
+            "sku": "sku",
+            "state": "state",
+            "summary": "summary",
+            "token": "token",
+            "vendorCode": "vendorCode",
+            "version": "0.1",
+            "views": Object {
+              "component": Object {
+                "aspectHeight": 3000,
+                "aspectWidth": 2500,
+                "viewerUrl": "test",
+                "zoom": false,
+              },
+              "config": Object {
+                "viewerUrl": "test",
+              },
+              "liveConfig": Object {
+                "viewerUrl": "test",
+              },
+              "panel": Object {
+                "viewerUrl": "test",
+              },
+            },
+            "whitelistedConfigUrls": Array [
+              "foo",
+            ],
+            "whitelistedPanelUrls": Array [
+              "bar",
+            ],
+          }
+    }
+    frameId="0"
+    iframe=""
+    mode="config"
+    type="config"
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "className": "rig-frame extension-frame",
+      "frameBorder": 0,
+      "src": "/extension-frame.html",
+      "title": "0",
+    },
+    "ref": [Function],
+    "rendered": null,
+    "type": "iframe",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "className": "rig-frame extension-frame",
+        "frameBorder": 0,
+        "src": "/extension-frame.html",
+        "title": "0",
+      },
+      "ref": [Function],
+      "rendered": null,
+      "type": "iframe",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`<ExtensionFrame /> when in live config mode renders correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ExtensionFrame
+    bindIframeToParent={[Function]}
+    extension={
+        Object {
+            "authorName": "test",
+            "bitsEnabled": false,
+            "channelId": "channelId",
+            "description": "description",
+            "iconUrl": "icon_url",
+            "id": "id",
+            "name": "name",
+            "requestIdentityLink": false,
+            "sku": "sku",
+            "state": "state",
+            "summary": "summary",
+            "token": "token",
+            "vendorCode": "vendorCode",
+            "version": "0.1",
+            "views": Object {
+              "component": Object {
+                "aspectHeight": 3000,
+                "aspectWidth": 2500,
+                "viewerUrl": "test",
+                "zoom": false,
+              },
+              "config": Object {
+                "viewerUrl": "test",
+              },
+              "liveConfig": Object {
+                "viewerUrl": "test",
+              },
+              "panel": Object {
+                "viewerUrl": "test",
+              },
+            },
+            "whitelistedConfigUrls": Array [
+              "foo",
+            ],
+            "whitelistedPanelUrls": Array [
+              "bar",
+            ],
+          }
+    }
+    frameId="0"
+    iframe=""
+    mode="dashboard"
+    type="liveConfig"
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "className": "rig-frame extension-frame",
+      "frameBorder": 0,
+      "src": "/extension-frame.html",
+      "title": "0",
+    },
+    "ref": [Function],
+    "rendered": null,
+    "type": "iframe",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "className": "rig-frame extension-frame",
+        "frameBorder": 0,
+        "src": "/extension-frame.html",
+        "title": "0",
+      },
+      "ref": [Function],
+      "rendered": null,
+      "type": "iframe",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`<ExtensionFrame /> when in live config mode renders correctly 2`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ExtensionFrame
+    bindIframeToParent={[Function]}
+    extension={
+        Object {
+            "authorName": "test",
+            "bitsEnabled": false,
+            "channelId": "channelId",
+            "description": "description",
+            "iconUrl": "icon_url",
+            "id": "id",
+            "name": "name",
+            "requestIdentityLink": false,
+            "sku": "sku",
+            "state": "state",
+            "summary": "summary",
+            "token": "token",
+            "vendorCode": "vendorCode",
+            "version": "0.1",
+            "views": Object {
+              "component": Object {
+                "aspectHeight": 3000,
+                "aspectWidth": 2500,
+                "viewerUrl": "test",
+                "zoom": false,
+              },
+              "config": Object {
+                "viewerUrl": "test",
+              },
+              "liveConfig": Object {
+                "viewerUrl": "test",
+              },
+              "panel": Object {
+                "viewerUrl": "test",
+              },
+            },
+            "whitelistedConfigUrls": Array [
+              "foo",
+            ],
+            "whitelistedPanelUrls": Array [
+              "bar",
+            ],
+          }
+    }
+    frameId="0"
+    iframe=""
+    mode="dashboard"
+    type="liveConfig"
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "className": "rig-frame extension-frame",
+      "frameBorder": 0,
+      "src": "/extension-frame.html",
+      "title": "0",
+    },
+    "ref": [Function],
+    "rendered": null,
+    "type": "iframe",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "className": "rig-frame extension-frame",
+        "frameBorder": 0,
+        "src": "/extension-frame.html",
+        "title": "0",
+      },
+      "ref": [Function],
+      "rendered": null,
+      "type": "iframe",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`<ExtensionFrame /> when in panel mode renders correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ExtensionFrame
+    bindIframeToParent={[Function]}
+    extension={
+        Object {
+            "authorName": "test",
+            "bitsEnabled": false,
+            "channelId": "channelId",
+            "description": "description",
+            "iconUrl": "icon_url",
+            "id": "id",
+            "name": "name",
+            "requestIdentityLink": false,
+            "sku": "sku",
+            "state": "state",
+            "summary": "summary",
+            "token": "token",
+            "vendorCode": "vendorCode",
+            "version": "0.1",
+            "views": Object {
+              "component": Object {
+                "aspectHeight": 3000,
+                "aspectWidth": 2500,
+                "viewerUrl": "test",
+                "zoom": false,
+              },
+              "config": Object {
+                "viewerUrl": "test",
+              },
+              "liveConfig": Object {
+                "viewerUrl": "test",
+              },
+              "panel": Object {
+                "viewerUrl": "test",
+              },
+            },
+            "whitelistedConfigUrls": Array [
+              "foo",
+            ],
+            "whitelistedPanelUrls": Array [
+              "bar",
+            ],
+          }
+    }
+    frameId="0"
+    iframe=""
+    mode="viewer"
+    type="panel"
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "className": "rig-frame extension-frame",
+      "frameBorder": 0,
+      "src": "/extension-frame.html",
+      "title": "0",
+    },
+    "ref": [Function],
+    "rendered": null,
+    "type": "iframe",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "className": "rig-frame extension-frame",
+        "frameBorder": 0,
+        "src": "/extension-frame.html",
+        "title": "0",
+      },
+      "ref": [Function],
+      "rendered": null,
+      "type": "iframe",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`<ExtensionFrame /> when in video overlay mode renders correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ExtensionFrame
+    bindIframeToParent={[Function]}
+    extension={
+        Object {
+            "authorName": "test",
+            "bitsEnabled": false,
+            "channelId": "channelId",
+            "description": "description",
+            "iconUrl": "icon_url",
+            "id": "id",
+            "name": "name",
+            "requestIdentityLink": false,
+            "sku": "sku",
+            "state": "state",
+            "summary": "summary",
+            "token": "token",
+            "vendorCode": "vendorCode",
+            "version": "0.1",
+            "views": Object {
+              "component": Object {
+                "aspectHeight": 3000,
+                "aspectWidth": 2500,
+                "viewerUrl": "test",
+                "zoom": false,
+              },
+              "config": Object {
+                "viewerUrl": "test",
+              },
+              "liveConfig": Object {
+                "viewerUrl": "test",
+              },
+              "panel": Object {
+                "viewerUrl": "test",
+              },
+            },
+            "whitelistedConfigUrls": Array [
+              "foo",
+            ],
+            "whitelistedPanelUrls": Array [
+              "bar",
+            ],
+          }
+    }
+    frameId="0"
+    iframe=""
+    mode="viewer"
+    type="video_overlay"
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "className": "rig-frame extension-frame",
+      "frameBorder": 0,
+      "src": "/extension-frame.html",
+      "title": "0",
+    },
+    "ref": [Function],
+    "rendered": null,
+    "type": "iframe",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "className": "rig-frame extension-frame",
+        "frameBorder": 0,
+        "src": "/extension-frame.html",
+        "title": "0",
+      },
+      "ref": [Function],
+      "rendered": null,
+      "type": "iframe",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`<ExtensionFrame /> when in video overlay mode renders correctly 2`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ExtensionFrame
+    bindIframeToParent={[Function]}
+    extension={
+        Object {
+            "authorName": "test",
+            "bitsEnabled": false,
+            "channelId": "channelId",
+            "description": "description",
+            "iconUrl": "icon_url",
+            "id": "id",
+            "name": "name",
+            "requestIdentityLink": false,
+            "sku": "sku",
+            "state": "state",
+            "summary": "summary",
+            "token": "token",
+            "vendorCode": "vendorCode",
+            "version": "0.1",
+            "views": Object {
+              "component": Object {
+                "aspectHeight": 3000,
+                "aspectWidth": 2500,
+                "viewerUrl": "test",
+                "zoom": false,
+              },
+              "config": Object {
+                "viewerUrl": "test",
+              },
+              "liveConfig": Object {
+                "viewerUrl": "test",
+              },
+              "panel": Object {
+                "viewerUrl": "test",
+              },
+            },
+            "whitelistedConfigUrls": Array [
+              "foo",
+            ],
+            "whitelistedPanelUrls": Array [
+              "bar",
+            ],
+          }
+    }
+    frameId="0"
+    iframe=""
+    mode="viewer"
+    type="video_overlay"
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "className": "rig-frame extension-frame",
+      "frameBorder": 0,
+      "src": "/extension-frame.html",
+      "title": "0",
+    },
+    "ref": [Function],
+    "rendered": null,
+    "type": "iframe",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "className": "rig-frame extension-frame",
+        "frameBorder": 0,
+        "src": "/extension-frame.html",
+        "title": "0",
+      },
+      "ref": [Function],
+      "rendered": null,
+      "type": "iframe",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
